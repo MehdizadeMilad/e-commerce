@@ -1,144 +1,237 @@
+<script>
+    $(document).ready(function () {
+        //-- Click on detail
+        $("ul.menu-items > li").on("click", function () {
+            $("ul.menu-items > li").removeClass("active");
+            $(this).addClass("active");
+        })
+
+        $(".attr,.attr2").on("click", function () {
+            var clase = $(this).attr("class");
+
+            $("." + clase).removeClass("active");
+            $(this).addClass("active");
+        })
+
+        //-- Click on QUANTITY
+        $(".btn-minus").on("click", function () {
+            var now = $(".section > div > input").val();
+            if ($.isNumeric(now)) {
+                if (parseInt(now) - 1 > 0) { now--; }
+                $(".section > div > input").val(now);
+            } else {
+                $(".section > div > input").val("1");
+            }
+        })
+        $(".btn-plus").on("click", function () {
+            var now = $(".section > div > input").val();
+            if ($.isNumeric(now)) {
+                $(".section > div > input").val(parseInt(now) + 1);
+            } else {
+                $(".section > div > input").val("1");
+            }
+        })
+    }) 
+</script>
+
 <style>
-    html {
-        font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-        font-size: 14px;
+    ul>li {
+        margin-right: 25px;
+        font-weight: lighter;
+        cursor: pointer
     }
 
-    h5 {
-        font-size: 1.28571429em;
-        font-weight: 700;
-        line-height: 1.2857em;
-        margin: 0;
+    li.active {
+        border-bottom: 3px solid silver;
     }
 
-    .card {
-        font-size: 1em;
-        overflow: hidden;
-        padding: 0;
-        border: none;
-        border-radius: .28571429rem;
-        box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    .item-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid #f6f6f6;
     }
 
-    .card-block {
-        font-size: 1em;
-        position: relative;
-        margin: 0;
-        padding: 1em;
-        border: none;
-        border-top: 1px solid rgba(34, 36, 38, .1);
-        box-shadow: none;
+    .menu-items {
+        list-style-type: none;
+        font-size: 11px;
+        display: inline-flex;
+        margin-bottom: 0px;
+        margin-top: 20px
     }
 
-    .card-img-top {
-        display: block;
+    .btn-success {
         width: 100%;
-        height: auto;
+        border-radius: 0px;
     }
 
-    .card-title {
-        font-size: 1.28571429em;
-        font-weight: 700;
-        line-height: 1.2857em;
-    }
-
-    .card-text {
-        clear: both;
-        margin-top: .5em;
-        color: rgba(0, 0, 0, .68);
-    }
-
-    .card-footer {
-        font-size: 1em;
-        position: static;
-        top: 0;
-        left: 0;
-        max-width: 100%;
-        padding: .75em 1em;
-        color: rgba(0, 0, 0, .4);
-        border-top: 1px solid rgba(0, 0, 0, .05) !important;
-        background: #fff;
-    }
-
-    .card-inverse .btn {
-        border: 1px solid rgba(0, 0, 0, .05);
-    }
-
-    .profile {
-        position: absolute;
-        top: -12px;
-        display: inline-block;
-        overflow: hidden;
-        box-sizing: border-box;
-        width: 25px;
-        height: 25px;
-        margin: 0;
-        border: 1px solid #fff;
-        border-radius: 50%;
-    }
-
-    .profile-avatar {
-        display: block;
+    .section {
         width: 100%;
-        height: 100%;
-        border-radius: 50%;
+        margin-left: -15px;
+        padding: 2px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background: #f8f9f9
     }
 
-    .profile-inline {
-        position: relative;
-        top: 0;
-        display: inline-block;
+    .title-price {
+        margin-top: 30px;
+        margin-bottom: 0px;
+        color: black
     }
 
-    .profile-inline~.card-title {
-        display: inline-block;
-        margin-left: 4px;
-        vertical-align: top;
+    .title-attr {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        color: black;
     }
 
-    .text-bold {
-        font-weight: 700;
+    .btn-minus {
+        cursor: pointer;
+        font-size: 7px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid gray;
+        border-radius: 2px;
+        border-right: 0px;
     }
 
-    .meta {
-        font-size: 1em;
-        color: rgba(0, 0, 0, .4);
+    .btn-plus {
+        cursor: pointer;
+        font-size: 7px;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid gray;
+        border-radius: 2px;
+        border-left: 0px;
     }
 
-    .meta a {
-        text-decoration: none;
-        color: rgba(0, 0, 0, .4);
+    div.section>div {
+        width: 100%;
+        display: inline-flex;
     }
 
-    .meta a:hover {
-        color: rgba(0, 0, 0, .87);
+    div.section>div>input {
+        margin: 0px;
+        padding-left: 5px;
+        font-size: 10px;
+        padding-right: 5px;
+        max-width: 18%;
+        text-align: center;
+    }
+
+    .attr,
+    .attr2 {
+        cursor: pointer;
+        margin-right: 5px;
+        height: 20px;
+        font-size: 10px;
+        padding: 2px;
+        border: 1px solid gray;
+        border-radius: 2px;
+    }
+
+    .attr.active,
+    .attr2.active {
+        border: 1px solid orange;
+    }
+
+    @media (max-width: 426px) {
+        .container {
+            margin-top: 0px !important;
+        }
+
+        .container>.row {
+            padding: 0px !important;
+        }
+
+        .container>.row>.col-xs-12.col-sm-5 {
+            padding-right: 0px;
+        }
+
+        .container>.row>.col-xs-12.col-sm-9>div>p {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+
+        .container>.row>.col-xs-12.col-sm-9>div>ul {
+            padding-left: 10px !important;
+
+        }
+
+        .section {
+            width: 104%;
+        }
+
+        .menu-items {
+            padding-left: 0px;
+        }
     }
 </style>
 
 
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!------ Include the above in your HEAD tag ---------->
+
 <div class="container">
+
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-            <div class="card">
-                <img class="card-img-top" src="https://picsum.photos/200/150/?random
-">
-                <div class="card-block">
-                    <figure class="profile">
-                        <img src="https://picsum.photos/200/150/?random" class="profile-avatar" alt="">
-                    </figure>
-                    <h4 class="card-title mt-3">Tawshif Ahsan Khan</h4>
-                    <div class="meta">
-                        <a>Friends</a>
-                    </div>
-                    <div class="card-text">
-                        Tawshif is a web designer living in Bangladesh.
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small>Last updated 3 mins ago</small>
-                    <button class="btn btn-secondary float-right btn-sm">show</button>
-                </div>
+        <div class="col-xs-4 item-photo">
+            <img style="max-width:100%;" src="{{product.imagePath}}" />
+        </div>
+        <div class="col-xs-5" style="border:0px solid gray">
+            <!-- Datos del vendedor y titulo del producto -->
+            <h3>{{product.title}}</h3>
+            <div class="meta">
+                <a class="badge-info badge-pill">strategy</a>
+                <a class="badge-info badge-pill">RGP</a>
             </div>
+
+
+        </div>
+        <div class="section" style="padding-bottom:20px;">
+            {{!-- <h5 class="title-attr"><small>چندتا می‌خوای؟</small></h5>
+            <div>
+                <div class="btn-minus"><span class="glyphicon glyphicon-minus"></span></div>
+                <input value="1" name="countPurchace"/>
+                <div class="btn-plus"><span class="glyphicon glyphicon-plus"></span></div>
+            </div> --}}
+        </div>
+
+        <!-- Botones de compra -->
+        <div class="section" style="padding-bottom:20px;">
+            <a href="/add-to-cart/{{product._id}}" class="btn btn-success"><span style="margin-right:20px"
+                    class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>افزودن به سبد خرید</a>
         </div>
     </div>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#about">درباره بازی</a></li>
+        <li><a data-toggle="tab" href="#comments">نظرات کاربران</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="about" class="tab-pane fade in active">
+            <h3>درباره بازی</h3>
+            <p>بازم درباره بازی</p>
+        </div>
+        <div id="comments" class="tab-pane in fade">
+            <h3>هیچکس هنوز نظری ندارده</h3>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
 </div>
