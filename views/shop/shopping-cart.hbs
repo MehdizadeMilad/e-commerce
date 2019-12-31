@@ -5,10 +5,9 @@
         <table class="table table-hover shopping-cart-wrap">
             <thead class="text-muted">
                 <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col" width="120">Quantity</th>
-                    <th scope="col" width="120">Price</th>
-                    <th scope="col" width="200" class="text-right">Action</th>
+                    <th scope="col-5">نام محصول</th>
+                    {{!-- <th scope="col-md-3" width="50px">تعداد</th> --}}
+                    <th scope="col-2" width="200px" class="text-right">ویرایش</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,13 +16,18 @@
                     <td>
                         <figure class="media">
                             <div class="img-wrap">
-                                <img src="{{this.item.imagePath}}" class="img-thumbnail img-sm"></div>
+                                <a href="/details/{{this.item._id}}">
+                                    <img src="{{this.item.imagePath}}" class="img-thumbnail img-sm"></div>
+                            </a>
                             <figcaption class="media-body">
-                                <h5 class="title text-truncate">{{this.item.title}} <sup>x {{this.qty}}</sup> </h5>
-                                {{!-- <dl class="param param-inline small">
-                                    <dt>Size: </dt>
-                                    <dd>XXL</dd>
-                                </dl> --}}
+                                <a href="/details/{{this.item._id}}">
+                                    <h5 class="title text-truncate">{{this.item.title}} <sup style="color: lightgray;"> (x{{this.qty}})</sup>
+                                    </h5>
+                                </a>
+                                <dl class="param param-inline small">
+                                    <dt>{{this.item.price}} تومان</dt>
+                                    <dd></dd>
+                                </dl>
                                 {{!-- <dl class="param param-inline small">
                                     <dt>Color: </dt>
                                     <dd>Orange color</dd>
@@ -31,25 +35,24 @@
                             </figcaption>
                         </figure>
                     </td>
-                    <td>
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </td>
-                    <td>
+                    {{!-- <td>
+                        <input type="number" 
+                            value="{{this.qty}}" 
+                            style="width: 70px;"
+                            name="countPurchace"/>
+                        <h5>{{this.qty}}</h5>
+                    </td> --}}
+                    {{!-- <td>
                         <div class="price-wrap">
                             <var class="price">USD {{this.price}}</var>
                             <small class="text-muted">(USD5 each)</small>
                         </div> <!-- price-wrap .// -->
-                    </td>
+                    </td> --}}
                     <td class="text-right">
                         {{!-- <a title="" href="" class="btn btn-outline-success" data-toggle="tooltip"
                             data-original-title="Save to Wishlist"> <i class="fa fa-heart"></i></a> --}}
-                        <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger"> × Remove</a>
-                        <a href="/reduce/{{this.item._id}}" class="btn btn-outline-warning"> × Reduce</a>
+                        <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger"> × حذف</a>
+                        {{!-- <a href="/reduce/{{this.item._id}}" class="btn btn-outline-warning"> × Reduce</a> --}}
                     </td>
                 </tr>
                 {{/each}}
