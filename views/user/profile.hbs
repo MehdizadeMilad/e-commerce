@@ -1,0 +1,345 @@
+<style>
+    /*!! Profile Page */
+
+    body {
+            {
+                {
+                 !-- background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+                --
+            }
+        }
+    }
+
+    .emp-profile {
+        padding: 3%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        border-radius: 0.5rem;
+        background: #fff;
+    }
+
+    .profile-img {
+        text-align: center;
+    }
+
+    .profile-img img {
+        width: 70%;
+        height: 100%;
+    }
+
+    .profile-img .file {
+        position: relative;
+        overflow: hidden;
+        margin-top: -20%;
+        width: 70%;
+        border: none;
+        border-radius: 0;
+        font-size: 15px;
+        background: #212529b8;
+    }
+
+    .profile-img .file input {
+        position: absolute;
+        opacity: 0;
+        right: 0;
+        top: 0;
+    }
+
+    .profile-head h5 {
+        color: #333;
+    }
+
+    .profile-head h6 {
+        color: #0062cc;
+    }
+
+    .profile-edit-btn {
+        border: none;
+        border-radius: 1.5rem;
+        width: 70%;
+        padding: 2%;
+        font-weight: 600;
+        color: #6c757d;
+        cursor: pointer;
+    }
+
+    .proile-rating {
+        font-size: 12px;
+        color: #818182;
+        margin-top: 5%;
+    }
+
+    .proile-rating span {
+        color: #495057;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .profile-head .nav-tabs {
+        margin-bottom: 5%;
+    }
+
+    .profile-head .nav-tabs .nav-link {
+        font-weight: 600;
+        border: none;
+    }
+
+    .profile-head .nav-tabs .nav-link.active {
+        border: none;
+        border-bottom: 2px solid #0062cc;
+    }
+
+    .profile-work {
+        padding: 14%;
+        margin-top: -15%;
+    }
+
+    .profile-work p {
+        font-size: 12px;
+        color: #818182;
+        font-weight: 600;
+        margin-top: 10%;
+    }
+
+    .profile-work a {
+        text-decoration: none;
+        color: #495057;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .profile-work ul {
+        list-style: none;
+    }
+
+    .profile-tab label {
+        font-weight: 600;
+    }
+
+    .profile-tab p {
+        font-weight: 600;
+        color: #0062cc;
+    }
+</style>
+
+
+{{!-- <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h1>User Profile</h1>
+        <hr>
+        <h2>My Orders</h2>
+
+        {{# each orders}}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <ul class="list-group">
+                    {{# each this.items}}
+                    <li class="list-group-item">
+                        <span class="badge">{{this.price}}</span>
+                        {{this.item.title}} | {{this.qty}} Units
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="panel-footer">
+                <strong>Total price: $ {{this.cart.totalPrice}}</strong>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div> --}}
+
+
+
+<div class="container emp-profile">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                        alt="" />
+                    <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="file" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        User Name
+                    </h5>
+                    {{!-- <h6>
+                        Web Developer and Designer
+                    </h6> --}}
+                    {{!-- <p class="proile-rating">RANKINGS : <span>8/10</span></p> --}}
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#orders" role="tab"
+                                aria-controls="profile" aria-selected="false">Orders</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+            </div>
+        </div>
+        <div class="row">
+            <hr />
+            {{!-- <div class="col-md-4">
+                <div class="profile-work" hidden>
+                    <p>WORK LINK</p>
+                    <a href="">Website Link</a><br />
+                    <a href="">Bootsnipp Profile</a><br />
+                    <a href="">Bootply Profile</a>
+                    <p>SKILLS</p>
+                    <a href="">Web Designer</a><br />
+                    <a href="">Web Developer</a><br />
+                    <a href="">WordPress</a><br />
+                    <a href="">WooCommerce</a><br />
+                    <a href="">PHP, .Net</a><br />
+                </div>
+            </div> --}}
+            <div class="col">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>User Id</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Kshiti123</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Kshiti Ghelani</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>kshitighelani@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>123 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Profession</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Web Developer and Designer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                        {{#if orders }}
+                        <div class="container">
+
+                            {{#each orders}}
+                            <div class="card">
+                                <table class="table table-hover shopping-cart-wrap">
+                                    <thead class="text-muted">
+                                        <tr>
+                                            <th scope="col">Product</th>
+                                            {{!-- <th scope="col" width="120">Quantity</th> --}}
+                                            <th scope="col" width="120">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each this.items}}
+                                        <tr>
+                                            <td>
+                                                <figure class="media">
+                                                    <div class="img-wrap">
+                                                        <img src="{{this.item.imagePath}}" class="img-thumbnail img-sm">
+                                                    </div>
+                                                    <figcaption class="media-body">
+                                                        <h5 class="title text-truncate">{{this.item.title}} <sup>x
+                                                                {{this.qty}}<sup> </h5>
+                                                    </figcaption>
+                                                </figure>
+                                            </td>
+
+                                            {{!-- <td>
+                                                {{this.price}}
+                                            </td> --}}
+
+                                            <td>
+                                                <div class="price-wrap">
+                                                    <var class="price">USD {{this.price}} $</var>
+                                                    <small class="text-muted">(USD5 each)</small>
+                                                </div> <!-- price-wrap .// -->
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+
+                                        {{!-- <tr>Total Price: {{this.totalPrice}}</tr> --}}
+
+                                    </tbody>
+                                </table>
+                            </div> <!-- card.// -->
+                            <div class="space-ten">
+                                <br>
+                            </div>
+                            {{/each}}
+                            {{else}}
+                            <hr>
+                            <div class="container">
+                                <div class="card">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                                            <h2>No Items in Cart! </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/if}}
+
+                            {{!-- <div class="row">
+                            <div class="">
+                                {{# each orders}}
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <ul class="list-group">
+                                            {{# each this.items}}
+                                            <li class="list-group-item">
+                                                <span class="badge">{{this.price}}</span>
+                                                {{this.item.title}} | {{this.qty}} Units
+                                            </li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <strong>Total price: $ {{this.cart.totalPrice}}</strong>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>  --}}
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+</div>

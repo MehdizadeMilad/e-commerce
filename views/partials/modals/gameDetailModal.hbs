@@ -1,0 +1,58 @@
+<style>
+    .product_view .modal-dialog {
+        max-width: 800px;
+        width: 100%;
+    }
+
+    .pre-cost {
+        text-decoration: line-through;
+        color: #a5a5a5;
+    }
+
+    .space-ten {
+        padding: 10px 0;
+    }
+</style>
+
+<div class="modal fade product_view" id="product_view_{{this._id}}" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{{this.title}}</h3>
+                <a href="#" data-dismiss="modal" class="class "><span class="glyphicon glyphicon-remove"></span>X</a>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-10 product_content">
+                        <p class="pull-right">{{this.description}}</p>
+                        <h3 class="cost"><span class="glyphicon glyphicon-usd"></span> {{this.price}}
+                            <small class="pre-cost"><span class="glyphicon glyphicon-usd"></span>{{this.price}}</small>
+                        </h3>
+                        <div class="row">
+                            <div class="col-10 col-offset-2">
+                                <select class="form-control" name="select">
+                                    <option value="" selected="">چندتا می‌خوای؟</option>
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                </select>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <div class="space-ten"></div>
+                        <div class="btn-ground pull-right">
+                            <a href='/add-to-cart/{{this._id}}' class="btn btn-primary"><span
+                                    class="fa fa-shopping-cart"></span> افزودن به سبد خرید</a>
+                        </div>
+                        <div class="space-ten"></div>
+
+                    </div>
+                    {{!-- 
+                    <div class="col-md-6 product_img justify-content-center">
+                        <img src="{{this.imagePath}}" class="img-responsive">
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

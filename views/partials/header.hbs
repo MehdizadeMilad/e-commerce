@@ -1,0 +1,130 @@
+{{!-- <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>zz
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Brand</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/shopping-cart"><i class="fa fa-shopping-cart"></i> Shopping Cart <span class="badge"
+            {{# if session.cart.totalQty}} hidden {{/if}}</span>{{session.cart.totalQty}} </span> </a> </li>
+             <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false"><i class="fa fa-user"></i> User Management <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {{# if login}}
+              <li><a href="/user/profile">User Account</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/user/signout">Logout</a></li>
+              {{else}}
+              <li><a href="/user/signup">Sign Up</a></li>
+              <li><a href="/user/signin">Sign In</a></li>
+              {{/if}}
+            </ul>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+ --}}
+
+<!-- Top Header Area -->
+{{!-- <div class="top-header-area" style="background: #00d0ff">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 d-flex align-items-center justify-content-between">
+        <!-- Logo Area -->
+        <div class="logo">
+          <a href="/"><img src="/img/core-img/logo.png" alt=""></a>
+        </div>
+
+        {{!-- <a href="/shopping-cart"><i class="fa fa-shopping-cart"></i> Shopping Cart <span class="badge badge-pill"
+            </span>{{session.cart.totalQty}} </span> </a>  --}}
+        <!-- Search & Login Area -->
+        {{!-- <div class="search-login-area d-flex align-items-center"> 
+          <!-- Top Search Area -->
+          <div class="top-search-area">
+            <form action="#" method="post">
+              <input type="search" name="top-search" id="topSearch" placeholder="Search">
+              <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+          <div class="login-area">
+            <a href="/user/signin"><span>ورود/ثبت‌نام</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+<!-- Navbar Area -->
+<div class="egames-main-menu" id="sticker">
+  <div class="classy-nav-container breakpoint-off">
+    <div class="container">
+      <!-- Menu -->
+      <nav class="classy-navbar justify-content-between" id="egamesNav">
+
+        <!-- Navbar Toggler -->
+        <div class="classy-navbar-toggler">
+          <span class="navbarToggler"><span></span><span></span><span></span></span>
+        </div>
+
+        <!-- Menu -->
+        <div class="classy-menu">
+
+          <!-- Close Button -->
+          <div class="classycloseIcon">
+            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+          </div>
+
+          <!-- Nav Start -->
+          <div class="classynav">
+            <div class=" d-flex align-items-center">
+
+            </div>
+            <ul>
+              <li>
+                <div class="logo">
+                  <a href="/"><img src="/img/core-img/logo.png" alt=""></a>
+                </div>
+              </li>
+              {{!-- <li><a href="/">خانه</a></li> --}}
+              
+              <li><a href="/contactUs">ارتباط با ما</a></li>
+              <li> 
+                <a href="/shopping-cart"></i> سبد خرید <i class="fa fa-shopping-cart"></i><span
+                    class="badge-info badge-pill">{{session.cart.totalQty}} </span> </a> </li> 
+                    
+                    <li>
+                    <div class="top-search-area">
+                      <form action="#" method="post">
+                        <input type="search" name="top-search" id="topSearch" placeholder="Search">
+                        <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+                      </form>
+                    </div>
+              </li>
+
+              <li>
+                <div class="">
+                  <a href="/user/signin"><span>ورود/ثبت‌نام</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+          <!-- Nav
+                    End -->
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
