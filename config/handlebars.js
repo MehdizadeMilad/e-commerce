@@ -4,6 +4,14 @@ var register = function (Handlebars) {
             if (longString.length > end)
                 return longString.substring(0, end);
             return longString;
+        },
+        defaultValue: function (modelValue, defaultValue) {
+            if (!modelValue) return defaultValue;
+        },
+        dateToFarsi: function (dateValue) {
+            let currentDate = new Date(dateValue);
+            let farsiDate = new Intl.DateTimeFormat('fa-IR').format(currentDate);
+            return farsiDate;
         }
     }
     if (Handlebars && typeof Handlebars.registerHelper === "function") {
