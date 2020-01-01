@@ -1,0 +1,54 @@
+<div class="row">
+
+    {{# if hasMessages}}
+    <div class="alert alert-light alert-dismissible fade show" role="alert">
+        <strong>Info</strong>
+        {{# each messages}}
+        <p>{{this}}</p>
+        {{/each}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if }}
+
+
+
+    {{# if hasInfos}}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>Info</strong>
+        {{# each messages}}
+        <p>{{this}}</p>
+        {{/each}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if }}
+
+    {{# if hasWarnings}}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Warning</strong>
+        {{# each messages}}
+        <p>{{this}}</p>
+        {{/each}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if }}
+
+
+    {{# if hasErrors}}
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>hasErrors</strong>
+        {{# each messages}}
+        <p>{{this}}</p>
+        {{/each}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if }}</div>
