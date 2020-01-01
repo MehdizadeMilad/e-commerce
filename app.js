@@ -36,11 +36,12 @@ app.set('view engine', '.hbs');
 
 
 //! Order is important!
-app.use(logger('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(logger('dev'));
 app.use(validator());
-app.use(cookieParser());
 app.use(session(
   {
     secret: 'mySuperSecret',
@@ -50,7 +51,7 @@ app.use(session(
       mongooseConnection: mongoose.connection
     }),
     cookie: {
-      maxAge: 180 * 60 * 1000 // 3 hours 
+      maxAge: 1800 * 60 * 1000
     }
 
   }));
@@ -58,7 +59,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use((req, res, next) => {

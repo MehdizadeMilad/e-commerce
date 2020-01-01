@@ -12,6 +12,9 @@ router.use(csrfProtection);
 
 //!! Logged in era
 router.get('/profile', isLoggedIn, (req, res, next) => {
+
+    let messages = req.flash('success'); //passport messages are stored on 'error'
+
     Order.find({ user: req.user }, (err, orders) => {
         if (err) return res.write('error loading orders')
         let cart;
@@ -20,7 +23,16 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
             cart = new Cart(o.cart);
             o.items = cart.generateArray();
         });
-        return res.render('user/profile', { orders: orders });
+
+        let currentUser = req.user;
+        currentUser.orders = orders;
+
+        return res.render('user/profile', {
+            user: currentUser,
+            orders: orders,
+            messages: messages,
+            hasMessages: messages.length > 0
+        });
     });
 })
 
@@ -41,15 +53,15 @@ router.get('/signup', (req, res, next) => {
     res.render('user/signup', {
         csrfToken: req.csrfToken(),
         messages: messages,
-        hasErrors: messages.length > 0
+        hasMessages: messages.length > 0
     })
 });
 
 router.post('/signup', passport.authenticate('local.signup', {
-    // successRedirect: '/user/profile',
     failureRedirect: '/user/signup',
-    failureFlash: true
-}, handleAuthenticationRedirection));
+    failureFlash: true,
+    successFlash: true,
+}), handleAuthenticationRedirection);
 
 
 router.get('/signin', (req, res, next) => {
@@ -65,7 +77,8 @@ router.get('/signin', (req, res, next) => {
 router.post('/signin', passport.authenticate('local.signin', {
     // successRedirect: '/user/profile', //! we are going to handle it manually
     failureRedirect: '/user/signin',
-    failureFlash: true
+    failureFlash: true,
+    passReqToCallback: true
 }), handleAuthenticationRedirection);
 
 

@@ -1,13 +1,7 @@
+    {{> alerts/alert}}
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
         <h1>Sign Up</h1>
-        {{# if hasErrors}}
-        <div class="alert-danger">
-            {{# each messages}}
-            <p>{{this}}</p>
-            {{/each}}
-        </div>
-        {{/if }}
         <form action="/user/signup" method="POST">
             <div class="form-group">
                 <label for="email">User name</label>
@@ -22,7 +16,7 @@
             <button class="btn btn-primary" type="submit">Sign Up</button>
         </form>
 
-        <p>Have an account? <a href="/user/signup">Sign in instead.</a></p>
+        <p>Have an account? <a href="/user/signin">Sign in instead.</a></p>
 
     </div>
 </div>

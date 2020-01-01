@@ -15,7 +15,6 @@ passport.deserializeUser(function (id, done) {
 passport.use('local.signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
-    badRequestMessage: 'bad request detected',
     passReqToCallback: true
 }, function (req, email, password, done) {
     //! Validations goes here ...
