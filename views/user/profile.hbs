@@ -136,7 +136,8 @@
                         <input type="file" name="file" />
                     </div>
                 </div> --}}
-                <input type="submit" class="btn btn-primary" name="btnAddMore" value="ویراش پروفایل" />
+                <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#squarespaceModal"  name="btnAddMore" value="ویراش پروفایل" />
+
 
             </div>
             <div class="col-md-6">
@@ -167,8 +168,8 @@
 
             <div class="col">
                 <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row">
+                    <div class="tab-pane  show active wow bounceInUp" data-wow-duration="1s" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row ">
                             <div class="col-md-6">
                                 <label>{{ defaultValue user.userName 'انتخاب نشده'}}</label>
                             </div>
@@ -206,7 +207,7 @@
                         <div class="container">
 
                             {{#each orders}}
-                            <div class="card">
+                            <div class="card wow bounceInUp" data-wow-duration="1s">
                                 <table class="table table-hover shopping-cart-wrap">
                                     <thead class="text-muted">
                                         <tr>
@@ -303,3 +304,8 @@
             </div>
     </form>
 </div>
+
+
+
+
+{{> modals/profileDetailsEdit}}
