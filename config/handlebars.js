@@ -7,6 +7,7 @@ var register = function (Handlebars) {
         },
         defaultValue: function (modelValue, defaultValue) {
             if (!modelValue) return defaultValue;
+            return modelValue;
         },
         dateToFarsi: function (dateValue) {
             let currentDate = new Date(dateValue);

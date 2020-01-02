@@ -9,6 +9,8 @@ const Cart = require('../models/cart');
 const csrfProtection = csrf();
 router.use(csrfProtection);
 
+const User = require('../models/user')
+
 
 //!! Logged in era
 router.get('/profile', isLoggedIn, (req, res, next) => {
@@ -35,6 +37,96 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
         });
     });
 })
+
+
+router.post('/profile/update', isLoggedIn, (req, res, next) => {
+
+    const { userName, fullName, email, address, postalCode, tel, mobile } = req.body
+
+    //some validation 
+
+    User.findById(req.user._id).then(user => {
+        User.find({ userName: userName }).then((err, existUser) => {
+
+            if (existUser) {
+                req.flash('success', 'نام کاربری دیگری انتخاب کنید لطفا. این یکی مجاز نیست')
+                return res.redirect('/user/profile')
+            }
+
+            user.userName = userName;
+            user.fullName = fullName;
+            user.address = address;
+            user.postalCode = postalCode;
+            user.tel = tel;
+            user.mobile = mobile;
+            user.save((err, result) => {
+                if (err) throw new Error('Error in password update');
+                req.flash('success', 'مشخصات شما بروزرسانی شد');
+                return res.redirect('/user/profile')
+            })
+        })
+    })
+        .catch(err => {
+            req.flash('success', 'بروز خطا، لطفا بعدا امتحان کنین')
+            res.redirect('/user/profile')
+        })
+});
+
+router.get('/profile/edit', isLoggedIn, (req, res, next) => {
+    let messages = req.flash('profileEditMessages');
+    res.render('user/profileEdit', {
+        user: req.user,
+        csrfToken: req.csrfToken(),
+        messages: messages,
+        hasMessages: messages.length > 0
+    });
+})
+
+
+router.post('/profile/edit/changePassword', isLoggedIn, (req, res, next) => {
+
+    let enteredCurrentPassword = req.body.currentPassword;
+
+    if (req.user.validPassword(enteredCurrentPassword)) {
+        console.log('valid');
+    }
+    else {
+        req.flash('profileEditMessages', 'رمزعبور معتبر نیست');
+        return res.redirect('/user/profile/edit');
+    }
+
+    req.checkBody('newPassword', 'رمزعبور حداقل ۴ کارکتر باید باشه').notEmpty().isLength({ min: 4, max: 70 })
+    req.checkBody('newPasswordConfirm', 'رمزعبور جدیدت مطابقت ندارن، دوباره تلاش کن لطفا').equals(req.body.newPassword);
+    let errors = req.validationErrors();
+
+    if (errors) {
+        let messages = [];
+        errors.forEach(err => {
+            messages.push(err.msg)
+        });
+
+        req.flash('profileEditMessages', messages);
+        return res.redirect('/user/profile/edit');
+    }
+
+    const currentUser = req.user;
+    User.findById(currentUser._id).then(user => {
+        user.password = user.encryptPassword(req.body.newPassword);
+        user.updated_at = Date.now()
+        user.save(function (err, result) {
+            if (err) {
+                throw new Error('Error in password update');
+            }
+            req.flash('profileEditMessages', 'رمز عبور بروزرسانی شد');
+            res.redirect('/user/profile/edit')
+        })
+    }).catch(err => {
+        req.flash('profileEditMessages', [' بروز خطا لطفا بعدا امتحان کنید یا اگر عجله دارید، با ما تماس بگیرین']);
+        return res.redirect('/user/profile/edit');
+    })
+});
+
+
 
 router.get('/signout', isLoggedIn, (req, res, next) => {
     req.logout();
@@ -97,7 +189,6 @@ function handleAuthenticationRedirection(req, res, next) {
 
 function isLoggedIn(req, res, next) {
 
-    console.log('*'.repeat(100))
     //Passport helper
     if (req.isAuthenticated()) {
         return next()

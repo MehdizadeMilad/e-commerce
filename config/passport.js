@@ -19,7 +19,8 @@ passport.use('local.signup', new LocalStrategy({
 }, function (req, email, password, done) {
     //! Validations goes here ...
     req.checkBody('email', 'Invalid Email').notEmpty().isEmail()
-    req.checkBody('password', 'Invalid password').notEmpty().isLength({ min: 4 })
+    req.checkBody('password', 'Invalid password').notEmpty().isLength({ min: 4, max: 70 })
+    req.checkBody('password2', 'Passwords doesn\'t match').equals(req.body.password);
     let errors = req.validationErrors();
 
     if (errors) {

@@ -1,7 +1,7 @@
 <div class="row">
 
     {{# if hasMessages}}
-    <div class="alert alert-light alert-dismissible fade show" role="alert">
+    <div class="alert alert-dark alert-dismissible  show" role="alert">
         <strong>Info</strong>
         {{# each messages}}
         <p>{{this}}</p>
@@ -15,7 +15,7 @@
 
 
     {{# if hasInfos}}
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <div class="alert alert-info alert-dismissible  show" role="alert">
         <strong>Info</strong>
         {{# each messages}}
         <p>{{this}}</p>
@@ -28,7 +28,7 @@
 
     {{# if hasWarnings}}
 
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <div class="alert alert-warning alert-dismissible  show" role="alert">
         <strong>Warning</strong>
         {{# each messages}}
         <p>{{this}}</p>
@@ -42,8 +42,8 @@
 
     {{# if hasErrors}}
 
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>hasErrors</strong>
+    <div class="alert alert-danger alert-dismissible  show" role="alert">
+        <strong>Errors</strong>
         {{# each messages}}
         <p>{{this}}</p>
         {{/each}}

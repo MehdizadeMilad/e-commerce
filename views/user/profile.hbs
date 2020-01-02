@@ -136,7 +136,8 @@
                         <input type="file" name="file" />
                     </div>
                 </div> --}}
-                <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#squarespaceModal"  name="btnAddMore" value="ویراش پروفایل" />
+                {{!-- <input type="button" class="btn btn-primary" data-toggle="modal" data-target="#squarespaceModal"  name="btnAddMore" value="ویراش پروفایل" /> --}}
+                <a href="/user/profile/edit" class="btn btn-primary">ویراش پروفایل</a>
 
 
             </div>
@@ -154,7 +155,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#orders" role="tab"
-                                aria-controls="profile" aria-selected="false">شفارش‌ها</a>
+                                aria-controls="profile" aria-selected="false">سفارش‌ها</a>
                         </li>
                     </ul>
                 </div>
@@ -168,7 +169,8 @@
 
             <div class="col">
                 <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane  show active wow bounceInUp" data-wow-duration="1s" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane  show active wow bounceInUp" data-wow-duration="1s" id="home" role="tabpanel"
+                        aria-labelledby="home-tab">
                         <div class="row ">
                             <div class="col-md-6">
                                 <label>{{ defaultValue user.userName 'انتخاب نشده'}}</label>
@@ -201,6 +203,26 @@
                                 <label>شماره همراه</label>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>{{defaultValue user.address 'بدون آدرس'}}</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label>آدرس</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>{{defaultValue user.postalCode 'بدون کدپستی'}}</label>
+                            </div>
+                            <div class="col-md-6">
+                                <label>کد پستی</label>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                         {{#if orders }}
@@ -267,7 +289,7 @@
                                 <div class="card">
                                     <div class="row">
                                         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                                            <h2>No Items in Cart! </h2>
+                                            <h2> سبد خرید خالی است</h2>
                                         </div>
                                     </div>
                                 </div>
