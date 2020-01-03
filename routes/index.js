@@ -19,9 +19,9 @@ router.get('/', function (req, res, next) {
 });
 
 
-router.get('/details/:id', (req, res, next) => {
-  let productId = req.params.id;
-  let product = Product.findById(productId, (err, product) => {
+router.get('/details/:title', (req, res, next) => {
+  let productTitle = req.params.title;
+  let product = Product.findOne({ title: productTitle }, (err, product) => {
     if (err) return res.redirect('/');
     res.render('shop/details', { product: product });
   })

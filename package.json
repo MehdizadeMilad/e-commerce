@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "pre": "node seed/ProductSeeders.js",
     "start": "node ./bin/www",
     "debug": "DEBUG=shopping-cart:* npm start"
   },
