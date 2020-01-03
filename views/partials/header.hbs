@@ -46,11 +46,12 @@
               </li>
 
               <li>
-                <div class="">
-                  <a href="/user/signin"><span>ورود/ثبت‌نام</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
-                </div>
+                {{#unless login}}
+                <a href="/user/signin"><span>ورود/ثبت‌نام</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                {{else }}
+                <a href="/user/profile"><span>پروفایل</span> <i class="fa fa-user" aria-hidden="true"></i></a>
+                {{/unless}}
               </li>
-
             </ul>
 
           </div>
