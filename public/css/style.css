@@ -9,6 +9,27 @@
 @import url(magnific-popup.css);
 @import url(font-awesome.min.css);
 
+@font-face {
+  font-family: Titr;
+  src: url('/fonts/titrbold.ttf') format('truetype');
+}
+@font-face {
+  font-family: Sahel;
+  src: url('/fonts/sahel.ttf') format('truetype');
+}
+@font-face {
+  font-family: Samim;
+  src: url('/fonts/samim.ttf') format('truetype');
+}
+@font-face {
+  font-family: Shabnam;
+  src: url('/fonts/shabnam.ttf') format('truetype');
+}
+@font-face {
+  font-family: Yekan;
+  src: url('/fonts/yekan.ttf') format('truetype');
+}
+
 
 .param {
   margin-bottom: 7px;
