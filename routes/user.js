@@ -157,7 +157,6 @@ router.post('/signup', passport.authenticate('local.signup', {
 
 
 router.get('/signin', (req, res, next) => {
-    console.log('fa-youtube-play');
     let messages = req.flash('error'); // Passport messages stored here.
     res.render('user/signin', {
         csrfToken: req.csrfToken(),
