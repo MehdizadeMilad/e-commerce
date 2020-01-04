@@ -14,6 +14,7 @@ const MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/index');
 const userRoutes = require('./routes/user');
+const adminRoutes = require('./routes/admin');
 
 
 
@@ -72,6 +73,7 @@ app.use((req, res, next) => {
 //! Order matters;
 app.use('/user', userRoutes);
 app.use('/', routes);
+app.use('/admin', adminRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

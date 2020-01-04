@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <style>
+        body {
+            padding-top: 60px;
+            padding: 5px;
+        }
+    </style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    {{!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+</head>
+
+<body>
+    <div class="container">
+        <div class="modal-content">
+            <div class="modal-header">
+                {{!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> --}}
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box">
+                    <div class="content">
+                        <div class="alert-info alert alert-dismissible fade show" role="alert" {{#unless hasMessages}}
+                            hidden {{/unless}}>
+                            {{messages}}
+                        </div>
+                        <div class="form loginBox">
+                            <form action="/admin/in" method="POST" accept-charset="UTF-8">
+                                <input class="form-control" type="text" placeholder="Email" name="email">
+                                <input class="form-control" type="password" placeholder="Password" name="password">
+                                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                                <button class="btn btn-default btn-login" type="submit">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
