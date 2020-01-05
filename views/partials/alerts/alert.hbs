@@ -1,54 +1,52 @@
-<div class="row">
-
-    {{# if hasMessages}}
-    <div class="alert alert-dark alert-dismissible  show" role="alert">
-        <strong>Info</strong>
-        {{# each messages}}
-        <p>{{this}}</p>
-        {{/each}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {{/if }}
+{{# if hasMessages}}
+<div class="alert alert-dark alert-dismissible  show" role="alert">
+    <strong>Info:</strong>
+    {{# each messages}} 
+    {{this}} <br>
+    {{/each}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if }}
 
 
 
-    {{# if hasInfos}}
-    <div class="alert alert-info alert-dismissible  show" role="alert">
-        <strong>Info</strong>
-        {{# each messages}}
-        <p>{{this}}</p>
-        {{/each}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {{/if }}
+{{# if hasInfos}}
+<div class="alert alert-info alert-dismissible  show" role="alert">
+    <strong>Info</strong>
+    {{# each messages}}
+    <p>{{this}}</p>
+    {{/each}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if }}
 
-    {{# if hasWarnings}}
+{{# if hasWarnings}}
 
-    <div class="alert alert-warning alert-dismissible  show" role="alert">
-        <strong>Warning</strong>
-        {{# each messages}}
-        <p>{{this}}</p>
-        {{/each}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {{/if }}
+<div class="alert alert-warning alert-dismissible  show" role="alert">
+    <strong>Warning</strong>
+    {{# each messages}}
+    <p>{{this}}</p>
+    {{/each}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if }}
 
 
-    {{# if hasErrors}}
+{{# if hasErrors}}
 
-    <div class="alert alert-danger alert-dismissible  show" role="alert">
-        <strong>Errors</strong>
-        {{# each messages}}
-        <p>{{this}}</p>
-        {{/each}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    {{/if }}</div>
+<div class="alert alert-danger alert-dismissible  show" role="alert">
+    <strong>Errors</strong>
+    {{# each messages}}
+    <p>{{this}}</p>
+    {{/each}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if }}
