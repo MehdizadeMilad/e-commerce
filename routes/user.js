@@ -41,7 +41,7 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
 
 router.post('/profile/update', isLoggedIn, (req, res, next) => {
 
-    const { userName, fullName, email, address, postalCode, tel, mobile } = req.body
+    const { productTitle, fullName, email, address, postalCode, tel, mobile } = req.body
 
     //some validation 
 
