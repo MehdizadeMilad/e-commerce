@@ -7,6 +7,13 @@
 
         <!-- Navbar Toggler -->
         <div class="classy-navbar-toggler">
+          {{#if session.cart.totalQty}}
+          <span>
+            <a href="/shopping-cart"></i> سبد خرید <i class="fa fa-shopping-cart"></i><span
+                class="badge-info badge-pill">{{session.cart.totalQty}} </span> </a> </li>
+          </span>
+          {{/if}}
+
           <span class="navbarToggler"><span></span><span></span><span></span></span>
         </div>
 
