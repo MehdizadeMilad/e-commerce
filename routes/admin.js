@@ -40,25 +40,6 @@ router.get('/dash', (req, res, next) => {
 });
 
 
-
-
-router.get('/in', (req, res, next) => {
-    //TODO login page
-    let messages = req.flash('error'); // Passport messages stored here.
-    return res.render(viewPath + '/login', {
-        layout: false,
-        csrfToken: req.csrfToken(),
-        messages: messages,
-        hasMessages: messages.length > 0
-    }
-    );
-});
-
-router.post('/in', (req, res, next) => {
-    //TODO login post
-    return res.redirect('/admin/dash')
-});
-
 router.get('/out', (req, res, next) => {
     req.logout();
     res.redirect('/');
@@ -81,19 +62,14 @@ router.get('/orders', (req, res, next) => {
 router.get('/products', (req, res, next) => {
 
     Product.find().then(products => {
-
         adminLayout.products = products;
         return res.render(viewPath + '/products/index', adminLayout);
     })
-        .catch(err => res.send('Error'))
+        .catch(err => res.render(viewPath + '/products/index', adminLayoutConfig('بروز خطا')))
 })
 
 router.get('/product/add', (req, res, next) => {
-
     adminLayout.csrfToken = req.csrfToken();
-    adminLayout.messages = req.flash('error').length > 0 ? req.flash('error') : req.flash('success');
-    adminLayout.hasMessages = adminLayout.messages.length > 0;
-
     return res.render(viewPath + '/products/add', adminLayout);
 });
 
@@ -102,7 +78,7 @@ router.post('/product/add', upload.single('image'), (req, res, next) => {
     if (!req.file || Object.keys(req.file).length === 0)
         return res.render(viewPath + '/product/add', adminLayoutConfig('عکس بازی چی شد پس؟'));
 
-    const { title, image, catRadio, price, description } = req.body
+    const { title, catRadio, price, description } = req.body
     //some validation
 
     const newProduct = new Product();
@@ -125,12 +101,33 @@ router.get('/product/edit/:id', (req, res, next) => {
             return res.redirect('/admin/products');
 
         adminLayout.product = product;
+        adminLayout.csrfToken = req.csrfToken();
         return res.render(viewPath + '/products/edit', adminLayout)
     })
 });
 
-router.post('/product/edit', (req, res, next) => {
+router.post('/product/edit', upload.single('image'), (req, res, next) => {
+    const { productId, title, catRadio, price, description } = req.body
 
+    //some validation
+
+    Product.findById(productId).then((newProduct) => {
+        if (!newProduct) return res.render(viewPath + '/products/index', adminLayoutConfig('محصول یافت نشد'));
+
+        if (req.file && Object.keys(req.file).length !== 0)
+            newProduct.imagePath = '/uploads/' + req.file.filename;
+
+        newProduct.title = title || newProduct.title;
+        newProduct.description = description || newProduct.description;
+        newProduct.category = catRadio || newProduct.category;
+        newProduct.price = price || newProduct.price;
+        newProduct.modified_by = req.user;
+        newProduct.modified_at = Date.now();
+        newProduct.save((err, result) => {
+            if (err) return res.render(`${viewPath}/product/edit/${productId}`, adminLayoutConfig('بروز خطا در بروزرسانی محصول'));
+            return res.redirect('/admin/products');
+        });
+    })
 })
 
 router.get('/product/delete/:id', (req, res, next) => {

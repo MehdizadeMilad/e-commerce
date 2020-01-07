@@ -1,1 +1,76 @@
-edit product 
+<h2>Edit Product</h2>
+<hr>
+
+<form action="/admin/product/edit?_csrf={{csrfToken}}" method="POST" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" required class="form-control" value="{{product.title}}"
+            oninvalid="this.setCustomValidity('بازی بدون عنوان نمی‌شه که دادا')" oninput="setCustomValidity('')">
+    </div>
+
+    <div class="form-group">
+        <label for="image">Product Image</label>
+        <br>
+        <img width="80px" height="80px" src="{{product.imagePath}}" alt="">
+        <input type="file" name="image" class="" value="{{product.imagePath}}"
+            oninvalid="this.setCustomValidity('یه عکس از بازی انتخاب کن')" oninput="setCustomValidity('')">
+        <hr>
+    </div>
+
+    <div class="form-group">
+        <h5>Game Category: {{product.category}}</h5>
+
+        <div class="container">
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" id="catStrategy" name="catRadio" value="strategy">
+                <label for="catStrategy" class="custom-control-label">
+                    استراتژی
+                </label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" id="catFPS" name="catRadio"
+                    value="First Person Shooter">
+                <label class="custom-control-label" for="catFPS">
+                    شخص اول - شووتر
+                </label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" id="catRPG" name="catRadio" value="RPG">
+                <label class="custom-control-label" for="catRPG">
+                    نقش‌آفرینی
+                </label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" id="catRacing" name="catRadio" value="Racing">
+                <label class="custom-control-label" for="catRacing">
+                    مسابقه‌ای
+                </label>
+            </div>
+
+            <div class="custom-control custom-radio">
+                <input class="custom-control-input" type="radio" id="catAdventure" name="catRadio" value="Adventure">
+                <label class="custom-control-label" for="catAdventure">
+                    ماجراجویی
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price</label>
+        <small>به تومان</small>
+        <input type="number" name="price" id="price" class="form-control" value="{{product.price}}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea name="description" cols="30" rows="10" class="form-control" required>{{product.description}}</textarea>
+    </div>
+    <input type="hidden" name="productId" value="{{product._id}}">
+    <input type="submit" class="btn btn-primary btn-block" value="Update">
+</form>

@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 const passport = require('passport');
 const flash = require('connect-flash');
+// const flash = require('express-flash');
 const validator = require('express-validator');
 const MongoStore = require('connect-mongo')(session);
 
