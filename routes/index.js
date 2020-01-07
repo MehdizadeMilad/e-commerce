@@ -74,7 +74,7 @@ router.get('/checkout', isLoggedIn, function (req, res, next) {
       total: cart.totalPrice,
       errMsg: errMsg,
       noError: !errMsg,
-      userName: req.user.name
+      user: req.user
     });
 });
 
@@ -85,22 +85,21 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
 
   var cart = new Cart(req.session.cart);
 
+
   let order = new Order({
     user: req.user,
     cart: cart,
-    address: req.body.address,
-    name: req.body.name
+    modified_by: req.user
   });
-
 
   order.save((err, result) => {
     if (err) {
       req.flash('error', 'Checkout Failed!');
-      res.redirect(req.session.oldUrl)
+      return res.redirect('/user/profile')
     }
     req.flash('success', 'Successfully bought product!');
     req.session.cart = null;
-    res.redirect('/');
+    return res.redirect('/');
   })
 
   // var stripe = require("stripe")(

@@ -41,29 +41,21 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
 
 router.post('/profile/update', isLoggedIn, (req, res, next) => {
 
-    const { productTitle, fullName, email, address, postalCode, tel, mobile } = req.body
+    const { fullName, address, postalCode, tel, mobile } = req.body
 
     //some validation 
 
     User.findById(req.user._id).then(user => {
-        User.find({ userName: userName }).then((err, existUser) => {
+        user.fullName = fullName;
+        user.address = address;
+        user.postalCode = postalCode;
+        user.tel = tel;
+        user.mobile = mobile;
+        user.save((err, result) => {
+            if (err) throw new Error('Error in password update');
 
-            if (existUser) {
-                req.flash('success', 'نام کاربری دیگری انتخاب کنید لطفا. این یکی مجاز نیست')
-                return res.redirect('/user/profile')
-            }
-
-            user.userName = userName;
-            user.fullName = fullName;
-            user.address = address;
-            user.postalCode = postalCode;
-            user.tel = tel;
-            user.mobile = mobile;
-            user.save((err, result) => {
-                if (err) throw new Error('Error in password update');
-                req.flash('success', 'مشخصات شما بروزرسانی شد');
-                return res.redirect('/user/profile')
-            })
+            req.flash('success', 'مشخصات شما بروزرسانی شد');
+            return res.redirect('/checkout')
         })
     })
         .catch(err => {
@@ -71,6 +63,7 @@ router.post('/profile/update', isLoggedIn, (req, res, next) => {
             res.redirect('/user/profile')
         })
 });
+
 
 router.get('/profile/edit', isLoggedIn, (req, res, next) => {
     let messages = req.flash('profileEditMessages');

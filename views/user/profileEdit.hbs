@@ -15,22 +15,23 @@
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane active in" id="home">
             <form action="/user/profile/update" method="POST" id="tab">
-                <label>نام کاربری</label>
-                <input type="text" name="userName" value="{{user.userName}}" class="input-xlarge" minlength="4" maxlength="25">
                 <label>نام و نام‌خانوادگی</label>
-                <input type="text" value="{{user.fullName}}" name="fullName" class="input-xlarge" min="5" maxlength="100">
+                <input type="text" value="{{user.fullName}}" name="fullName" class="input-xlarge" min="5"
+                    maxlength="100">
                 <label>ایمیل</label>
-                <input type="text" value="{{user.email}}" disabled name="email" class="input-xlarge" minlength="6" maxlength="25">
+                <input type="text" value="{{user.email}}" disabled name="email" class="input-xlarge" minlength="6"
+                    maxlength="25">
                 <label>آدرس کامل پستی</label>
-                <textarea value="Smith" rows="3" name="address" class="input-xlarge" minlength="5" maxlength="250">
-                    {{user.address}}
-            </textarea>
+                <textarea value="Smith" rows="3" name="address" class="input-xlarge" minlength="5"
+                    maxlength="250">{{user.address}}</textarea>
 
                 <label>کد پستی</label>
-                <input type="number" value="{{user.postalCode}}" name="postalCode" class="input-xlarge" minlength="8" maxlength="25">
+                <input type="number" value="{{user.postalCode}}" name="postalCode" class="input-xlarge" minlength="8"
+                    maxlength="25">
 
                 <label>شماره همراه</label>
-                <input type="text" value="{{user.mobile}}" name="mobile" class="input-xlarge" minlength="10" maxlength="15">
+                <input type="text" value="{{user.mobile}}" name="mobile" class="input-xlarge" minlength="10"
+                    maxlength="15">
 
                 <label>شماره تلفن ثابت</label>
                 <input type="text" value="{{user.tel}}" name="tel" class="input-xlarge" minlength="4" maxlength="25">

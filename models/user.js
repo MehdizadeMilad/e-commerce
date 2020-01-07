@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs')
 
 const userSchema = new Schema({
     email: { type: String, required: true, unique: true, minlength: 6, maxlength: 25 },
-    userName: { type: String, default: null, unique: true, minlength: 4, maxlength: 25 },
+    // userName: { type: String, default: null, unique: true, minlength: 4, maxlength: 25 },
     fullName: { type: String, default: null, minlength: 2, maxlength: 100 },
     tel: { type: String, minlength: 4, maxlength: 25 },
     mobile: { type: String, minlength: 10, maxlength: 15 }, // maxlength is 13 for iran.

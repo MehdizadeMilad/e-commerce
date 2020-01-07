@@ -171,7 +171,7 @@
                 <div class="tab-content profile-tab" id="myTabContent">
                     <div class="tab-pane  show active wow bounceInUp" data-wow-duration="1s" id="home" role="tabpanel"
                         aria-labelledby="home-tab">
-                        <div class="row ">
+                        <div class="row">
                             <div class="col-md-6">
                                 <label>{{ defaultValue user.userName 'انتخاب نشده'}}</label>
                             </div>
@@ -271,6 +271,7 @@
                                             <td colspan="2" dir="rtl">تعداد {{this.cart.totalQty}} عدد
                                                 در تاریخ {{ dateToFarsi this.created_at}}
                                                 هزینه کل:‌ {{this.cart.totalPrice}}
+                                                وضعیت : {{this.status}}
                                             </td>
                                         </tr>
 
