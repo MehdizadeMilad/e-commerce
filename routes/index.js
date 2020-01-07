@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+const csrf = require('csurf')
 var Cart = require('../models/cart');
+
+const csrfProtection = csrf();
+router.use(csrfProtection);
 
 var Product = require('../models/product');
 var Order = require('../models/order');
+const Message = require('../models/messages');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -101,37 +106,30 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
     req.session.cart = null;
     return res.redirect('/');
   })
-
-  // var stripe = require("stripe")(
-  //     "sk_test_fwmVPdJfpkmwlQRedXec5IxR"
-  // );
-
-  //     stripe.charges.create({
-  //         amount: cart.totalPrice * 100,
-  //         currency: "usd",
-  //         source: req.body.stripeToken, // obtained with Stripe.js
-  //         description: "Test Charge"
-  //     }, function(err, charge) {
-  //         if (err) {
-  //             req.flash('error', err.message);
-  //             return res.redirect('/checkout');
-  //         }
-  //         var order = new Order({
-  //             user: req.user,
-  //             cart: cart,
-  //             address: req.body.address,
-  //             name: req.body.name,
-  //             paymentId: charge.id
-  //         });
-  //         order.save(function(err, result) {
-  //             req.flash('success', 'Successfully bought product!');
-  //             req.session.cart = null;
-  //             res.redirect('/');
-  //         });
-  //     }); 
 });
 
-module.exports = router;
+router.get('/contactUs', (req, res, next) => {
+
+  return res.render('contactUs', { csrfToken: req.csrfToken()});
+})
+
+router.post('/contactUs', (req, res, next) => {
+  const { name, email, subject, message } = req.body;
+
+  let newMessage = new Message();
+  newMessage.name = name;
+  newMessage.email = email;
+  newMessage.subject = subject;
+  newMessage.message = message;
+  newMessage.save((err, result) => {
+    if (err)
+      return res.render('contactUs', { message: 'بروز خطا، لطفا با شماره تلفن تماس بگیرید' })
+    return res.render('contactUs', { message: 'پیام شما ارسال شد' });
+  })
+})
+
+
+
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
@@ -141,3 +139,5 @@ function isLoggedIn(req, res, next) {
   res.redirect('/user/signin');
 }
 
+
+module.exports = router;

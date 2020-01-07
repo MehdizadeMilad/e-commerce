@@ -9,9 +9,6 @@ const upload = multer({
     fileFilter: imageUploadFilterHandler
 })
 
-
-
-
 const Order = require('../models/order');
 const Cart = require('../models/cart');
 const Product = require('../models/product');
