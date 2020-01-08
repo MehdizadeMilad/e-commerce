@@ -9,7 +9,6 @@ const messageSchema = Schema({
     email: { type: String, require: true },
     subject: { type: String, require: true },
     message: { type: String, require: true, maxLength: 250 },
-    created_at: { type: Date, default: Date.now },
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Message', messageSchema);

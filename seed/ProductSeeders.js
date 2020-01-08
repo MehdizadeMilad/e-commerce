@@ -13,19 +13,22 @@ const products = [
         imagePath: 'https://media.playstation.com/is/image/SCEA/playstation-4-slim-vertical-product-shot-01-us-07sep16?$native_t$',
         title: 'PS41',
         description: description,
-        price: 120
+        price: 120,
+        category: 'strategy'
     }),
     new Product({
         imagePath: 'https://media.playstation.com/is/image/SCEA/playstation-4-slim-vertical-product-shot-01-us-07sep16?$native_t$',
         title: 'PS42',
         description: description,
-        price: 111
+        price: 111,
+        category: 'racing'
     }),
     new Product({
         imagePath: 'https://media.playstation.com/is/image/SCEA/playstation-4-slim-vertical-product-shot-01-us-07sep16?$native_t$',
         title: 'PS43',
         description: description,
-        price: 123
+        price: 123,
+        category: 'sport'
     }),
     new Product({
         imagePath: 'https://media.playstation.com/is/image/SCEA/playstation-4-slim-vertical-product-shot-01-us-07sep16?$native_t$',

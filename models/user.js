@@ -12,8 +12,6 @@ const userSchema = new Schema({
     postalCode: { type: Number, minlength: 8, maxlength: 25 },
     password: { type: String, required: true, minlength: 6, maxlength: 70 },
     role: { type: String, enum: ['user', 'ranger'], default: 'user' },
-    updated_at: { type: Date, default: null },
-    created_at: { type: Date, default: Date.now }
 });
 
 userSchema.methods.encryptPassword = function (password) {

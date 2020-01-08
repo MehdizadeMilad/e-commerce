@@ -9,10 +9,8 @@ const productSchema = Schema({
     category: { type: String, maxlength: 250 },
     price: { type: Number, required: true, },
     available: { type: Boolean, default: true },
-    created_at: { type: Date, default: Date.now },
-    modified_at: { type: Date, default: Date.now },
     modified_by: { type: Schema.Types.ObjectId, ref: 'User' }
-});
+}, {timestamps: true});
 
 
 module.exports = mongoose.model('Product', productSchema);

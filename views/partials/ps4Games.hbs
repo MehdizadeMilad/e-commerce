@@ -232,7 +232,9 @@
                 </figure> --}}
                 <h4 class="card-title mt-3">{{this.title}}</h4>
                 <div class="meta">
+                    {{#if this.category}}
                     <a class="badge-info badge-pill">{{this.category}}</a>
+                    {{/if}}
                 </div>
                 <div class="card-text text-justify">
                     {{trimString this.description 50}}

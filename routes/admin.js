@@ -43,14 +43,12 @@ router.get('/out', (req, res, next) => {
 });
 
 router.get('/orders', (req, res, next) => {
-    return res.render(viewPath + '/orders/index', adminLayoutConfig());
+    // return res.render(viewPath + '/orders/index', adminLayoutConfig());
     Order.find().then(orders => {
         if (!orders) throw new Error('fetching Orders failed.')
-        const currentUser = req.user.orders = orders;
 
-        return res.render(viewPath + 'orders/index');
-
-
+        adminLayout.orders = orders;
+        return res.render(viewPath + '/orders/index', adminLayout);
     }).catch(err => {
         res.json(err)
     })
