@@ -37,7 +37,7 @@ router.get('/add-to-cart/:id', function (req, res, next) {
     }
     cart.add(product, product.id);
     req.session.cart = cart;
-    req.flash('success', 'Cart Updated');
+    req.flash('success', 'کالا به سبد خرید اضافه شد');
     res.redirect('/');
   });
 });
@@ -76,6 +76,7 @@ router.get('/checkout', isLoggedIn, function (req, res, next) {
   var errMsg = req.flash('error')[0];
   res.render('shop/checkout',
     {
+      csrfToken: req.csrfToken(),
       total: cart.totalPrice,
       errMsg: errMsg,
       noError: !errMsg,
@@ -102,7 +103,7 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
       req.flash('error', 'Checkout Failed!');
       return res.redirect('/user/profile')
     }
-    req.flash('success', 'Successfully bought product!');
+    req.flash('success', 'سفارش شما با موفقیت ثبت شد. با شما تماس می‌گیریم');
     req.session.cart = null;
     return res.redirect('/');
   })

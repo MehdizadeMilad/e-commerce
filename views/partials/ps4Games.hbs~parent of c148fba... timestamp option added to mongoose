@@ -1,0 +1,252 @@
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-6">
+        <div class="alert alert-success" id="success" {{#if noMessages}}hidden{{/if}}>
+            {{successMessage}}
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .CenterContent {
+        align-items: center;
+    }
+
+    .card img:hover {
+        opacity: 0.7;
+
+    }
+
+    .mainImageCarousel {
+        width: 250px;
+        min-width: 250px;
+        max-width: 250px;
+
+        height: 300px;
+        min-height: 300px;
+        max-height: 300px;
+
+        margin: 3px;
+        padding: 3px;
+    }
+
+
+    /* SHADOW/GLOW TRANSITIONS */
+    /* Glow */
+    .hvr-glow {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: box-shadow;
+        transition-property: box-shadow;
+    }
+
+    .hvr-glow:hover,
+    .hvr-glow:focus,
+    .hvr-glow:active {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    }
+
+
+
+    /* Skew */
+    .hvr-skew {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+    }
+
+    .hvr-skew:hover,
+    .hvr-skew:focus,
+    .hvr-skew:active {
+        -webkit-transform: skew(-10deg);
+        transform: skew(-10deg);
+    }
+
+    /* Bounce Out */
+    .hvr-bounce-out {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+    }
+
+    .hvr-bounce-out:hover,
+    .hvr-bounce-out:focus,
+    .hvr-bounce-out:active {
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+        -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+        transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+    }
+
+    html {
+        font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+    }
+
+    h5 {
+        font-size: 1.28571429em;
+        font-weight: 700;
+        line-height: 1.2857em;
+        margin: 0;
+    }
+
+    .card {
+        font-size: 1em;
+        overflow: hidden;
+        padding: 0;
+        border: none;
+        border-radius: .28571429rem;
+        box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+    }
+
+    .card-block {
+        font-size: 1em;
+        position: relative;
+        margin: 0;
+        padding: 1em;
+        border: none;
+        border-top: 1px solid rgba(34, 36, 38, .1);
+        box-shadow: none;
+    }
+
+    .card-img-top {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .card-title {
+        font-size: 1.28571429em;
+        font-weight: 700;
+        line-height: 1.2857em;
+    }
+
+    .card-text {
+        clear: both;
+        margin-top: .5em;
+        color: rgba(0, 0, 0, .68);
+    }
+
+    .card-footer {
+        font-size: 1em;
+        position: static;
+        top: 0;
+        left: 0;
+        max-width: 100%;
+        padding: .75em 1em;
+        color: rgba(0, 0, 0, .4);
+        border-top: 1px solid rgba(0, 0, 0, .05) !important;
+        background: #fff;
+    }
+
+    .card-footer a {
+        text-decoration: underline;
+    }
+
+    .card-footer a:hover {
+        text-decoration: none;
+    }
+
+    .card-inverse .btn {
+        border: 1px solid rgba(0, 0, 0, .05);
+    }
+
+    .profile {
+        position: absolute;
+        top: -12px;
+        display: inline-block;
+        overflow: hidden;
+        box-sizing: border-box;
+        width: 25px;
+        height: 25px;
+        margin: 0;
+        border: 1px solid #fff;
+        border-radius: 50%;
+    }
+
+    .profile-avatar {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+    .profile-inline {
+        position: relative;
+        top: 0;
+        display: inline-block;
+    }
+
+    .profile-inline~.card-title {
+        display: inline-block;
+        margin-left: 4px;
+        vertical-align: top;
+    }
+
+    .text-bold {
+        font-weight: 700;
+    }
+
+    .meta {
+        font-size: 7px;
+        color: rgba(0, 0, 0, .4);
+    }
+
+    .meta a {
+        font-size: 10px;
+        text-decoration: none;
+        color: rgba(0, 0, 0, .4);
+    }
+
+    .meta a:hover {
+        color: rgba(0, 0, 0, .87);
+    }
+</style>
+
+{{!-- data-wow-duration="2s" data-wow-delay="1s" --}}
+
+<div class="row">
+
+    {{# each products }}
+    <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+        <div class="card wow fadeIn" data-wow-duration="1s">
+            <img class="card-img-top mainImageCarousel" src="{{this.imagePath}}">
+            <div class="card-block">
+                {{!-- <figure class="profile">
+                    <img src="https://picsum.photos/200/150/?random" class="profile-avatar" alt="">
+                </figure> --}}
+                <h4 class="card-title mt-3">{{this.title}}</h4>
+                <div class="meta">
+                    <a class="badge-info badge-pill">{{this.category}}</a>
+                </div>
+                <div class="card-text text-justify">
+                    {{trimString this.description 50}}
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="float-right" href="/details/{{this.title}}"><small>جزئیات بازی</small></a>
+                <button data-toggle="modal" data-target="#product_view_{{this._id}}"
+                    class="btn btn-secondary float-left btn-sm"><span class="fa fa-search"></span></button>
+            </div>
+        </div>
+    </div>
+    {{> modals/gameDetailModal}}
+
+    {{/each }}
+
+</div>

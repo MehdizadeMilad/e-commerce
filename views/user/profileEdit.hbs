@@ -17,7 +17,7 @@
             <form action="/user/profile/update" method="POST" id="tab">
                 <label>نام و نام‌خانوادگی</label>
                 <input type="text" value="{{user.fullName}}" name="fullName" class="input-xlarge" min="5"
-                    maxlength="100">
+                    maxlength="100" required>
                 <label>ایمیل</label>
                 <input type="text" value="{{user.email}}" disabled name="email" class="input-xlarge" minlength="6"
                     maxlength="25">
@@ -39,7 +39,7 @@
                 <input type="hidden" name="_csrf" value="{{ csrfToken }}">
 
                 <div>
-                    <button class="btn btn-primary">Update</button>
+                    <button class="btn btn-primary">بروزرسانی</button>
                 </div>
             </form>
         </div>

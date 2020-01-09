@@ -44,15 +44,33 @@ router.get('/out', (req, res, next) => {
 
 router.get('/orders', (req, res, next) => {
     // return res.render(viewPath + '/orders/index', adminLayoutConfig());
-    Order.find().then(orders => {
-        if (!orders) throw new Error('fetching Orders failed.')
+    Order.find()
+        .populate('user')
+        .then(orders => {
+            if (!orders) throw new Error('fetching Orders failed.')
 
-        adminLayout.orders = orders;
-        return res.render(viewPath + '/orders/index', adminLayout);
-    }).catch(err => {
-        res.json(err)
-    })
+            let cart;
+            orders.forEach(o => {
+                //Cart is saved in db as JSON
+                cart = new Cart(o.cart);
+                o.items = cart.generateArray();
+            });
+
+            adminLayout.orders = orders;
+            return res.render(viewPath + '/orders/index', adminLayout);
+        }).catch(err => {
+            res.json(err)
+        })
 });
+
+//!! show order detail in edit mode and let admin to confirm or reject it.
+router.get('/order/edit:id', (req, res, next) => {
+    let id = req.param.id;
+    Order.findById(id).then((err, order) => {
+        adminLayout.order = order;
+        return res.render(viewPath + 'orders/edit', adminLayout);
+    });
+})
 
 router.get('/products', (req, res, next) => {
 

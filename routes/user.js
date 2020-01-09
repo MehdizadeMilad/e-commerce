@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const csrf = require('csurf')
 const passport = require('passport')
-
 const Order = require('../models/order');
 const Cart = require('../models/cart');
 
@@ -41,9 +40,24 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
 
 router.post('/profile/update', isLoggedIn, (req, res, next) => {
 
-    const { fullName, address, postalCode, tel, mobile } = req.body
+    req.checkBody('fullName', 'اسم رو کامل وارد کن').notEmpty().isLength({ min: 4, max: 70 });
+    req.checkBody('address', 'آدرس رو درست وارد کن').notEmpty().isLength({ min: 5, max: 250 });
+    req.checkBody('postalCode', 'کد پستی').notEmpty().isLength({ min: 7, max: 70 });
+    req.checkBody('tel', 'تلفن ثابت').notEmpty().isLength({ min: 5, max: 70 });
+    req.checkBody('mobile', 'تلفن همراه').notEmpty().isLength({ min: 5, max: 70 });
 
-    //some validation 
+    let errors = req.validationErrors();
+
+    if (errors) {
+        let messages = [];
+        errors.forEach(err => {
+            messages.push(err.msg)
+        });
+        req.flash('profileEditMessages', messages);
+        return res.redirect('/user/profile/edit');
+    }
+
+    const { fullName, address, postalCode, tel, mobile } = req.body
 
     User.findById(req.user._id).then(user => {
         user.fullName = fullName;
@@ -52,10 +66,13 @@ router.post('/profile/update', isLoggedIn, (req, res, next) => {
         user.tel = tel;
         user.mobile = mobile;
         user.save((err, result) => {
-            if (err) throw new Error('Error in password update');
+            if (err) {
+                req.flash('success', 'عملیات بروزرسانی موفق نبود. لطفا دوباره امتحان کن');
+                return res.redirect('/user/profile')
+            }
 
             req.flash('success', 'مشخصات شما بروزرسانی شد');
-            return res.redirect('/checkout')
+            return res.redirect('/user/profile')
         })
     })
         .catch(err => {
@@ -77,6 +94,8 @@ router.get('/profile/edit', isLoggedIn, (req, res, next) => {
 
 
 router.post('/profile/edit/changePassword', isLoggedIn, (req, res, next) => {
+
+    //TODO validation 
 
     let enteredCurrentPassword = req.body.currentPassword;
 
@@ -174,7 +193,7 @@ function handleAuthenticationRedirection(req, res, next) {
         res.redirect(oldUrl);
     }
     else {
-        res.redirect('/user/profile');
+        res.redirect('/user/profile/edit');
     }
 }
 
