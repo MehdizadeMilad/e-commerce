@@ -21,7 +21,8 @@ router.get('/', function (req, res, next) {
 router.get('/details/:title', (req, res, next) => {
   let productTitle = req.params.title;
   let product = Product.findOne({ title: productTitle }, (err, product) => {
-    if (err) return res.redirect('/');
+    if (err || !product) return res.redirect('/');
+
     res.render('shop/details', { product: product });
   })
 })
@@ -111,7 +112,7 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
 
 router.get('/contactUs', (req, res, next) => {
 
-  return res.render('contactUs', { csrfToken: req.csrfToken()});
+  return res.render('contactUs', { csrfToken: req.csrfToken() });
 })
 
 router.post('/contactUs', (req, res, next) => {

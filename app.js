@@ -93,4 +93,12 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
+
+
+process.on('SIGINT', onSigInt)
+
+function onSigInt() {
+  process.exit(0);
+}
+
 module.exports = app;

@@ -139,7 +139,6 @@ router.post('/profile/edit/changePassword', isLoggedIn, (req, res, next) => {
 });
 
 
-
 router.get('/signout', isLoggedIn, (req, res, next) => {
     req.logout();
     res.redirect('/');
