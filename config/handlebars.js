@@ -13,6 +13,12 @@ var register = function (Handlebars) {
             let currentDate = new Date(dateValue);
             let farsiDate = new Intl.DateTimeFormat('fa-IR').format(currentDate);
             return farsiDate;
+        },
+        dateTimeToFarsi: function (dateValue) {
+            let currentDate = new Date(dateValue);
+            let currentTime = currentDate.toLocaleTimeString('fa-IR');
+            let farsiDate = new Intl.DateTimeFormat('fa-IR').format(currentDate);
+            return `${farsiDate} ${currentTime}`;
         }
     }
     if (Handlebars && typeof Handlebars.registerHelper === "function") {
