@@ -13,4 +13,4 @@ WORKDIR /usr/src/app
 
 #expose port and start application
 EXPOSE 80
-CMD ["yarn", "start"]
+# CMD ["yarn", "start"]

@@ -1,16 +1,19 @@
 version: "3"
 services:
   web:
-    build: .
+    # build: .
+    image: node:12
+    working_dir: /usr/src/app
     container_name: rangers_web_app
     ports:
       - "3000:3000"
     volumes: 
         - .:/usr/src/app
-    depends_on:
-      - mongo
-  mongo:
-    image: mongo
-    container_name: rangers_db
-    ports:
-      - "27017:27017"
+    # command: yarn start 
+  #   depends_on:
+  #     - mongo
+  # mongo:
+  #   image: mongo
+  #   container_name: rangers_db
+  #   ports:
+  #     - "27017:27017"

@@ -1,7 +1,3 @@
-/* Core Stylesheet - 1.0 */
-/* :: 1.0 Import Fonts */
-/* @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"); */
-/* :: 2.0 Import All CSS */
 @import url(bootstrap.min.css);
 @import url(classy-nav.css);
 @import url(owl.carousel.min.css);
@@ -131,12 +127,6 @@ var {
   margin: 0;
   padding: 0;
 }
-
-/* Titr
-Sahel
-Samim
-Shabnam
-Yekan */
 
 body {
   /* font-family: "Yekan", "Open Sans", sans-serif; */
