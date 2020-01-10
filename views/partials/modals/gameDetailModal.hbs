@@ -1,19 +1,3 @@
-<style>
-    .product_view .modal-dialog {
-        max-width: 800px;
-        width: 100%;
-    }
-
-    .pre-cost {
-        text-decoration: line-through;
-        color: #a5a5a5;
-    }
-
-    .space-ten {
-        padding: 10px 0;
-    }
-</style>
-
 <div class="modal fade product_view" id="product_view_{{this._id}}" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -25,17 +9,17 @@
                 <div class="row">
                     <div class="col-md-12 product_content">
                         <img src="{{this.imagePath}}" width="150" height="150" alt="">
-                        <p class="">{{this.description}}</p>
-                        <h3 class="cost"><span class="glyphicon glyphicon-usd"></span> {{this.price}}
-                            <small class="pre-cost"><span class="glyphicon glyphicon-usd"></span>{{this.price}}</small>
+                        <p class="modalGameDescription">{{this.description}}</p>
+                        <h3 class="costFa">تومان {{this.price}}
+                            {{#if this.price}}
+                            <small class="pre-cost">{{this.prePrice}}</small>
+                            {{/if}}
                         </h3>
                         <div class="space-ten"></div>
-                        <div class="btn-ground pull-right">
-                            <a href='/add-to-cart/{{this._id}}' class="btn btn-primary"><span
-                                    class="fa fa-shopping-cart"></span> افزودن به سبد خرید</a>
+                        <div class="">
+                            <a href='/add-to-cart/{{this._id}}' class="btn btn-outline-primary btn-block">
+                                <span class="fa fa-shopping-cart"></span> افزودن به سبد خرید</a>
                         </div>
-                        <div class="space-ten"></div>
-
                     </div>
                 </div>
             </div>

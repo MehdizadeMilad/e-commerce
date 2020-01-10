@@ -43,13 +43,12 @@
   font-weight: bold;
 }
 
-.tableHeaderFarsi th{
+.tableHeaderFarsi th {
   text-align: center;
 }
 .circleCorner {
   border-radius: 14px;
 }
-
 
 .buttonFarsi {
   font-family: "Yekan";
@@ -68,17 +67,74 @@
   font-weight: bolder;
 }
 
-.formFarsi input ,textarea{
+.formFarsi input,
+textarea {
   font-family: Yekan;
   font-size: small;
 }
 
-
-
-
 .rtl {
   direction: rtl;
 }
+
+/* Profile Page */
+
+.profile-head .nav-tabs {
+  margin-bottom: 5%;
+}
+
+.profile-head h5 {
+  text-align: right;
+}
+
+.profile-head .nav-tabs .nav-link {
+  font-weight: 600;
+  border: none;
+}
+
+.profile-head .nav-tabs .nav-link.active {
+  border: none;
+  border-bottom: 2px solid #0062cc;
+}
+
+.aboutMeTitle {
+  text-align: right;
+  border-bottom: solid 0.5px rosybrown;
+  border-radius: 100px;
+}
+
+.aboutMeValue {
+  text-align: center;
+  border-bottom: solid 0.5px rosybrown;
+  border-radius: 100px;
+}
+
+/* End Profile Page */
+
+/* Modal game details */
+.product_view .modal-dialog {
+  max-width: 800px;
+  width: 100%;
+}
+
+.pre-cost {
+  text-decoration: line-through;
+  color: #a5a5a5;
+}
+
+.modalGameDescription {
+  direction: rtl;
+  text-align: justify;
+}
+
+.costFa {
+  text-align: right;
+  padding-right: 45px;
+  padding-bottom: 11px;
+}
+/* End Modal game details */
+
+
 
 .param {
   margin-bottom: 7px;
