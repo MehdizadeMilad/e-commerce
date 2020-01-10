@@ -1,226 +1,157 @@
-<style>
-    .profile-head .nav-tabs {
-        margin-bottom: 5%;
-    }
-
-    .profile-head .nav-tabs .nav-link {
-        font-weight: 600;
-        border: none;
-    }
-
-    .profile-head .nav-tabs .nav-link.active {
-        border: none;
-        border-bottom: 2px solid #0062cc;
-    }
-
-    .profile-work {
-        padding: 14%;
-        margin-top: -15%;
-    }
-
-    .profile-work p {
-        font-size: 12px;
-        color: #818182;
-        font-weight: 600;
-        margin-top: 10%;
-    }
-
-    .profile-work a {
-        text-decoration: none;
-        color: #495057;
-        font-weight: 600;
-        font-size: 14px;
-    }
-</style>
-
 {{> alerts/alert}}
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <a href="/user/profile/edit" class="btn btn-primary">ویراش پروفایل</a>
-        </div>
-        <div class="col-md-8">
-            <div class="profile-head">
-                <h5>
-                    {{defaultValue user.fullName 'نام و نام‌خانوادگی شما'}}
-                </h5>
-                <br>
+<div style="padding-top: 50px"></div>
+<div class="row rtl">
+    <div class="col-md-11 col-md-offset-1">
+        <div class="profile-head">
+            <h5>
+                {{defaultValue user.fullName 'نام و نام‌خانوادگی شما'}}
+            </h5>
+            <br>
 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                            aria-controls="home" aria-selected="true">درباره من</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#orders" role="tab"
-                            aria-controls="profile" aria-selected="false">سفارش‌ها</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                        aria-controls="home" aria-selected="true">درباره من</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#orders" role="tab"
+                        aria-controls="profile" aria-selected="false">سفارش‌ها</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/profile/edit" role="tab">ویرایش پروفایل</a>
+                </li>
+            </ul>
         </div>
     </div>
+</div>
 
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-md-10 col-offset-1" style="display: flex;flex-direction: column;">
+        <div class="tab-content profile-tab" id="myTabContent">
+            <div class="tab-pane  show active wow bounceInUp" data-wow-duration="1s" id="home" role="tabpanel"
+                aria-labelledby="home-tab">
 
-
-    <div class="row">
-        <hr />
-
-        <div class="col">
-            <div class="tab-content profile-tab" id="myTabContent">
-                <div class="tab-pane  show active wow bounceInUp" data-wow-duration="1s" id="home" role="tabpanel"
-                    aria-labelledby="home-tab">
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>{{user.email}}</label>
-                        </div>
-                        <div class="col-md-6">
-                            <label>ایمیل</label>
-                        </div>
+                <div class="row">
+                    <div class="col aboutMeValue">
+                        <label>{{user.email}}</label>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>{{defaultValue user.tel 'بدون شماره'}}</label>
-                        </div>
-                        <div class="col-md-6">
-                            <label>تلفن ثابت</label>
-                        </div>
+                    <div class="col aboutMeTitle">
+                        <label>ایمیل</label>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>{{defaultValue user.mobile 'بدون شماره'}}</label>
-                        </div>
-                        <div class="col-md-6">
-                            <label>شماره همراه</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>{{defaultValue user.address 'بدون آدرس'}}</label>
-                        </div>
-                        <div class="col-md-6">
-                            <label>آدرس</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>{{defaultValue user.postalCode 'بدون کدپستی'}}</label>
-                        </div>
-                        <div class="col-md-6">
-                            <label>کد پستی</label>
-                        </div>
-                    </div>
-
                 </div>
-                <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                    {{#if orders }}
-                    <div class="container">
+                <div class="row">
+                    <div class="col aboutMeValue">
+                        <label>{{defaultValue user.tel 'بدون شماره'}}</label>
+                    </div>
+                    <div class="col aboutMeTitle">
+                        <label>تلفن ثابت</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col aboutMeValue">
+                        <label>{{defaultValue user.mobile 'بدون شماره'}}</label>
+                    </div>
+                    <div class="col aboutMeTitle">
+                        <label>شماره همراه</label>
+                    </div>
+                </div>
 
-                        {{#each orders}}
-                        <div class="card wow bounceInUp" data-wow-duration="1s">
-                            <table class="table table-hover shopping-cart-wrap tableHeaderFarsi">
-                                <thead class="text-muted">
-                                    <tr>
-                                        <th scope="col">محصول</th>
-                                        {{!-- <th scope="col" width="120">Quantity</th> --}}
-                                        <th scope="col" width="120">قیمت (به تومان)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{#each this.items}}
-                                    <tr>
-                                        <td>
-                                            <a href="#">
-                                                <figure class="media">
-                                                    <div class="img-wrap">
-                                                        <img src="{{this.item.imagePath}}" class="img-thumbnail img-sm">
-                                                    </div>
-                                                    <figcaption class="media-body">
-                                                        <h5 class="title text-truncate">{{this.item.title}} <sup>x
-                                                                {{this.qty}}<sup> </h5>
-                                                    </figcaption>
-                                                </figure>
-                                            </a>
-                                        </td>
+                <div class="row">
+                    <div class="col aboutMeValue">
+                        <label>{{defaultValue user.address 'بدون آدرس'}}</label>
+                    </div>
+                    <div class="col aboutMeTitle">
+                        <label>آدرس</label>
+                    </div>
+                </div>
 
-                                        <td style="vertical-align: middle">
-                                            <div class="price-wrap">
-                                                <var class="price farsi">{{this.price}}</var>
+                <div class="row">
+                    <div class="col aboutMeValue">
+                        <label>{{defaultValue user.postalCode 'بدون کدپستی'}}</label>
+                    </div>
+                    <div class="col aboutMeTitle">
+                        <label>کد پستی</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                {{#if orders }}
+                <div class="container">
+                    {{#each orders}}
+                    <div class="card wow bounceInUp" data-wow-duration="1s">
+                        <table class="table table-hover shopping-cart-wrap tableHeaderFarsi">
+                            <thead class="text-muted">
+                                <tr>
+                                    <th scope="col">محصول</th>
+                                    {{!-- <th scope="col" width="120">Quantity</th> --}}
+                                    <th scope="col" width="120">قیمت (به تومان)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each this.items}}
+                                <tr>
+                                    <td>
+                                        <figure class="media">
+                                            <div class="img-wrap">
+                                                <img src="{{this.item.imagePath}}" class="img-thumbnail img-sm">
                                             </div>
-                                        </td>
-                                    </tr>
-                                    {{/each}}
+                                            <figcaption class="media-body">
+                                                <a href="/details/{{this.item.title}}">
+                                                    <h5 class="title text-truncate">{{this.item.title}} <sup>x
+                                                            {{this.qty}}<sup> </h5>
+                                                </a>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
 
+                                    <td style="vertical-align: middle">
+                                        <div class="price-wrap">
+                                            <var class="price farsi">{{this.price}}</var>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/each}}
 
-                                    <tr style="background: silver;">
-                                        <td colspan="2" class="farsi" dir="rtl" style="text-align: right;">تعداد
-                                            {{this.cart.totalQty}} کالا
-                                            در تاریخ {{ dateTimeToFarsi this.createdAt}}
-                                            <strong>هزینه کل:‌ {{this.cart.totalPrice}}</strong>
+                                <tr style="background: silver;">
+                                    <td colspan="2" class="farsi" dir="rtl" style="text-align: right;">تعداد
+                                        {{this.cart.totalQty}} کالا
+                                        در تاریخ {{ dateTimeToFarsi this.createdAt}}
+                                        <strong>هزینه کل:‌ {{this.cart.totalPrice}}</strong>
 
-                                        </td>
-                                    </tr>
+                                    </td>
+                                </tr>
 
-                                    <tr style="background-color: orange;">
-                                        <td colspan="2" class="farsi" style="text-align: center;">
-                                            وضعیت : {{this.status}}
-                                        </td>
-                                    </tr>
+                                <tr style="background-color: antiquewhite;">
+                                    <td colspan="2" class="farsi" style="text-align: center;">
+                                        وضعیت : {{this.status}}
+                                    </td>
+                                </tr>
 
-                                    {{!-- <tr>Total Price: {{this.totalPrice}}</tr> --}}
-
-                                </tbody>
-                            </table>
-                        </div> <!-- card.// -->
-                        <div class="space-ten">
-                            <br>
-                        </div>
-                        {{/each}}
-                        {{else}}
-                        <hr>
-                        <div class="container">
-                            <div class="card">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                                        <h2> سبد خرید خالی است</h2>
-                                    </div>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="space-ten">
+                        <br>
+                    </div>
+                    {{/each}}
+                    {{else}}
+                    <hr>
+                    <div class="container">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+                                    <h2> سبد خرید خالی است</h2>
                                 </div>
                             </div>
                         </div>
-                        {{/if}}
-
-                        {{!-- <div class="row">
-                            <div class="">
-                                {{# each orders}}
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <ul class="list-group">
-                                            {{# each this.items}}
-                                            <li class="list-group-item">
-                                                <span class="badge">{{this.price}}</span>
-                                                {{this.item.title}} | {{this.qty}} Units
-                                            </li>
-                                            {{/each}}
-                                        </ul>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <strong>Total price: $ {{this.cart.totalPrice}}</strong>
-                                    </div>
-                                </div>
-                                {{/each}}
-                            </div>  --}}
-
-
-
-
                     </div>
+                    {{/if}}
                 </div>
             </div>
         </div>
-        </form>
     </div>
 </div>
 
