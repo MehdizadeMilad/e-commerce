@@ -5,9 +5,9 @@
         <table class="table table-hover shopping-cart-wrap">
             <thead class="text-muted">
                 <tr>
-                    <th scope="col-5">نام محصول</th>
+                    <th scope="col-5" class="tableHeaderFarsi">نام محصول</th>
                     {{!-- <th scope="col-md-3" width="50px">تعداد</th> --}}
-                    <th scope="col-2" width="200px" class="text-right">ویرایش</th>
+                    <th scope="col-2" width="200px" class="text-right tableHeaderFarsi">ویرایش</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,45 +21,25 @@
                             </a>
                             <figcaption class="media-body">
                                 <a href="/details/{{this.item._id}}">
-                                    <h5 class="title text-truncate">{{this.item.title}} <sup style="color: lightgray;"> (x{{this.qty}})</sup>
+                                    <h5 class="title text-truncate">{{this.item.title}} <sup class="farsi" style="color: lightgray;"> (x{{this.qty}})</sup>
                                     </h5>
                                 </a>
                                 <dl class="param param-inline small">
-                                    <dt>{{this.item.price}} تومان</dt>
+                                    <dt class="farsi">تومان {{this.item.price}}</dt>
                                     <dd></dd>
                                 </dl>
-                                {{!-- <dl class="param param-inline small">
-                                    <dt>Color: </dt>
-                                    <dd>Orange color</dd>
-                                </dl> --}}
                             </figcaption>
                         </figure>
                     </td>
-                    {{!-- <td>
-                        <input type="number" 
-                            value="{{this.qty}}" 
-                            style="width: 70px;"
-                            name="countPurchace"/>
-                        <h5>{{this.qty}}</h5>
-                    </td> --}}
-                    {{!-- <td>
-                        <div class="price-wrap">
-                            <var class="price">USD {{this.price}}</var>
-                            <small class="text-muted">(USD5 each)</small>
-                        </div> <!-- price-wrap .// -->
-                    </td> --}}
-                    <td class="text-right">
-                        {{!-- <a title="" href="" class="btn btn-outline-success" data-toggle="tooltip"
-                            data-original-title="Save to Wishlist"> <i class="fa fa-heart"></i></a> --}}
-                        <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger"> × حذف</a>
-                        {{!-- <a href="/reduce/{{this.item._id}}" class="btn btn-outline-warning"> × Reduce</a> --}}
+                    <td class="text-right" style="vertical-align: middle;">
+                        <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger buttonFarsi"> × حذف</a>
                     </td>
                 </tr>
                 {{/each}}
 
             </tbody>
         </table>
-        <a href="/checkout" class="btn btn-block btn-success">Checkout <strong>Total: {{totalPrice}} $</strong></a>
+        <a href="/checkout" class="btn btn-block btn-success farsi">ثبت سفارش <strong class="farsi">مجموع: {{totalPrice}} تومان</strong></a>
 
     </div> <!-- card.// -->
 
@@ -74,8 +54,10 @@
 <div class="container">
     <div class="card">
         <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <h2>No Items in Cart! </h2>
+            <div class="col-md-10 col-md-offset-2" style="text-align: center;">
+                <h2>سبد خرید خالی است</h2>
+                <br>
+                <img width="600" height="800" src="https://image.flaticon.com/icons/svg/102/102661.svg" alt="">
             </div>
         </div>
     </div>

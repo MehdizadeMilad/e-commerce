@@ -1,71 +1,56 @@
-<!-- Navbar Area -->
-<div class="egames-main-menu" id="sticker">
-  <div class="classy-nav-container breakpoint-off">
-    <div class="container">
-      <!-- Menu -->
-      <nav class="classy-navbar justify-content-between" id="egamesNav">
+<nav class="navbar navbar-expand-md navbar-light bg-light ">
+  <a class="navbar-brand" href="/"><i class="fa fa-gamepad"></i> Rangers</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <!-- Navbar Toggler -->
-        <div class="classy-navbar-toggler">
-          {{#if session.cart.totalQty}}
-          <span>
-            <a href="/shopping-cart"></i> سبد خرید <i class="fa fa-shopping-cart"></i><span
-                class="badge-info badge-pill">{{session.cart.totalQty}} </span> </a> </li>
-          </span>
-          {{/if}}
+  {{#if session.cart.totalQty}}
+  <ul class="nav navbar-nav navbar-right">
+    <li class="nav-item">
+      <a class="nav-link farsi" href="/shopping-cart">
+        <span class="badge-info badge-pill"> {{session.cart.totalQty}} </span>
+        <i class="fa fa-shopping-cart"><span class="farsi"> سبد خرید</span></i>
+      </a>
+    </li>
+  </ul>
+  {{/if }}
 
-          <span class="navbarToggler"><span></span><span></span><span></span></span>
+
+
+
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <span class="farsi">حساب کاربری </span><i class="fa fa-user"></i class="fa fa-user">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          {{#unless login}}
+          <a class="dropdown-item" href="/user/signup"><span class="farsi">ثبت‌نام</span></a>
+          <a class="dropdown-item" href="/user/signin"><span class="farsi">ورود</span></a>
+          {{else}}
+          <a class="dropdown-item" href="/user/profile"><span class="farsi">پروفایل</span></a>
+          {{!-- <div class="dropdown-divider"></div> --}}
+          <a class="dropdown-item" href="/user/signout"><span class="farsi">خروج</span></a>
+          {{/unless }}
         </div>
-
-        <!-- Menu -->
-        <div class="classy-menu">
-
-          <!-- Close Button -->
-          <div class="classycloseIcon">
-            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-          </div>
-
-          <!-- Nav Start -->
-          <div class="classynav">
-            {{!-- <div class=" d-flex align-items-center">
-            </div> --}}
-
-            <ul>
-              <li>
-                <div class="logo">
-                  <a href="/"><img src="/img/core-img/logo.png" alt=""></a>
-                </div>
-              </li>
-              {{!-- <li><a href="/">خانه</a></li> --}}
-
-              <li><a href="/contactUs">ارتباط با ما</a></li>
-              <li>
-                <a href="/shopping-cart"></i> سبد خرید <i class="fa fa-shopping-cart"></i><span
-                    class="badge-info badge-pill">{{session.cart.totalQty}} </span> </a> </li>
-
-              <li>
-                <div class="top-search-area">
-                  <form action="#" method="post">
-                    <input type="search" name="top-search" id="topSearch" placeholder="Search">
-                    <button type="submit" class="btn"><i class="fa fa-search"></i></button>
-                  </form>
-                </div>
-              </li>
-
-              <li>
-                {{#unless login}}
-                <a href="/user/signin"><span>ورود/ثبت‌نام</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
-                {{else }}
-                <a href="/user/profile"><span>پروفایل</span> <i class="fa fa-user" aria-hidden="true"></i></a>
-                {{/unless}}
-              </li>
-            </ul>
-
-          </div>
-          <!-- Nav
-                    End -->
-        </div>
-      </nav>
-    </div>
+      </li>
+      {{!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li> --}}
+    </ul>
+    <form action="#" method="POST" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2 circleCorner" dir="rtl" type="search" placeholder="دنبال بازی می‌گردی؟ بنویس"
+        aria-label="Search" style="font-family: Yekan">
+      <button class="btn pill btn-outline-success my-2 my-sm-0 farsi circleCorner" type="submit"><span
+          class="fa fa-search"></spanc>
+          <span class="">جستجو</span>
+      </button>
+    </form>
   </div>
-</div>
+</nav>

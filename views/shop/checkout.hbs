@@ -1,52 +1,76 @@
 {{#unless login}}
-<div class="row">
-    <p class="alert alert-danger">حساب کاربری بساز که بتونی سفارش‌هات رو پیگیری کنی</p>
-    <br>
-    <p class="alert alert-danger">ساخت حساب کاربری هم کمتر از یک دیقه زمان می‌بره</p style="color: red">
-    <br>
-    <a href="/user/signup" class="alert alert-danger">منو بمال با انگشتت</a>
-</div>
-
-{{else}}
-
-<div class="row">
-    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
-        <h1>ثبت سفارش</h1>
-        <h4>هزینه کل: {{total}} تومان</h4>
-        {{> alerts/alert}}
-        <hr>
-
-
-        <form action="/checkout" method="POST">
-
-            <div class="form-group">
-                <label for="fullName">نام و نام‌خانوادگی</label>
-                <input type="text" value="{{{user.fullName}}}" name="fullName" min="5" class="form-control" maxlength="100"
-                    required>
-            </div>
-
-            <label>آدرس کامل پستی</label>
-            <textarea value="{{{user.address}}}" rows="3" name="address" class="form-control" minlength="5" maxlength="250" required>{{user.address}}</textarea>
-
-            <label>کد پستی</label>
-            <input type="number" value="{{{user.postalCode}}}" name="postalCode" minlength="8" class="form-control" maxlength="25"
-                required>
-
-            <label>شماره همراه</label>
-            <input type="text" value="{{{user.mobile}}}" name="mobile" class="form-control" minlength="10" maxlength="15"
-                required>
-
-            <label>شماره تلفن ثابت</label>
-            <input type="text" value="{{{user.tel}}}" name="tel" class="form-control" minlength="4" maxlength="25" required>
-
-            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-            <br>
-            <div>
-                <button class="btn btn-primary" type="submit">ثبت سفارش</button>
-            </div>
-        </form>
+<div class="row rtl">
+    <div class="col-md-4">
+        <p class="alert alert-danger">حساب کاربری بساز که بتونی سفارش‌هات رو پیگیری کنی</p>
+    </div>
+    <div class="col-md-4">
+        <p class="alert alert-danger">ساخت حساب کاربری هم کمتر از یک دیقه زمان می‌بره</p>
+    </div>
+    <div class="col-md-4">
+        <a href="#">
+            <p class="alert alert-danger">بریم برای ثبت‌نام؟ بمال روم</p>
+        </a>
     </div>
 </div>
+{{else}}
 
 
+<style>
+    .checkoutHeader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        direction: rtl;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .checkoutSubHeader {
+        text-align: justify;
+    }
+</style>
+
+<div class="container">
+
+    <div class="checkoutHeader">
+        <h1>ثبت سفارش</h1>
+        <h4>هزینه کل: {{total}} تومان</h4>
+    <hr>
+        <p class="checkoutSubHeader">لطفا اطلاعات زیر رو تکمیل کن
+            اگه تو پروفایلت اینارو ثبت کنی، برای سفارش‌های بعدیت نیازی به نوشتنشون
+            نداری</p>
+    </div>
+
+    {{> alerts/alert}}
+
+    <form action="/checkout" method="POST" class="formFarsi">
+
+        <div class="form-group">
+            <label for="fullName">نام و نام‌خانوادگی</label>
+            <input type="text" value="{{{user.fullName}}}" name="fullName" min="5" class="form-control inputFarsi" maxlength="100"
+                required>
+        </div>
+
+        <label>آدرس کامل پستی</label>
+        <textarea value="{{{user.address}}}" rows="3" name="address" class="form-control" minlength="5" maxlength="250"
+            required>{{user.address}}</textarea>
+
+        <label>کد پستی</label>
+        <input type="number" value="{{{user.postalCode}}}" name="postalCode" minlength="8" class="form-control"
+            maxlength="25" required>
+
+        <label>شماره همراه</label>
+        <input type="text" value="{{{user.mobile}}}" name="mobile" class="form-control" minlength="10" maxlength="15"
+            required>
+
+        <label>شماره تلفن ثابت</label>
+        <input type="text" value="{{{user.tel}}}" name="tel" class="form-control" minlength="4" maxlength="25" required>
+
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <br>
+        <div>
+            <button class="btn btn-success btn-block farsi" type="submit">ثبت سفارش</button>
+        </div>
+    </form>
+</div>
 {{/unless}}

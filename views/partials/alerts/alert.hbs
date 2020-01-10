@@ -1,8 +1,8 @@
 {{# if hasMessages}}
 <div class="alert alert-dark alert-dismissible  show" role="alert">
     {{!-- <strong>Info:</strong> --}}
-    {{# each messages}} 
-    {{this}} <br>
+    {{# each messages}}
+    <p>{{this}}</p> <br>
     {{/each}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>

@@ -14,21 +14,9 @@
 
     .card img:hover {
         opacity: 0.7;
-
     }
 
-    .mainImageCarousel {
-        width: 250px;
-        min-width: 250px;
-        max-width: 250px;
-
-        height: 300px;
-        min-height: 300px;
-        max-height: 300px;
-
-        margin: 3px;
-        padding: 3px;
-    }
+  
 
 
     /* SHADOW/GLOW TRANSITIONS */
@@ -236,12 +224,12 @@
                     <a class="badge-info badge-pill">{{this.category}}</a>
                     {{/if}}
                 </div>
-                <div class="card-text text-justify">
+                <div class="card-text text-justify rtl">
                     {{trimString this.description 50}}
                 </div>
             </div>
             <div class="card-footer">
-                <a class="float-right" href="/details/{{this.title}}"><small>جزئیات بازی</small></a>
+                <a class="float-right" href="/details/{{this.title}}"><small class="shabnam">جزئیات بازی</small></a>
                 <button data-toggle="modal" data-target="#product_view_{{this._id}}"
                     class="btn btn-secondary float-left btn-sm"><span class="fa fa-search"></span></button>
             </div>

@@ -12,25 +12,7 @@
             $("." + clase).removeClass("active");
             $(this).addClass("active");
         })
-
-        //-- Click on QUANTITY
-        $(".btn-minus").on("click", function () {
-            var now = $(".section > div > input").val();
-            if ($.isNumeric(now)) {
-                if (parseInt(now) - 1 > 0) { now--; }
-                $(".section > div > input").val(now);
-            } else {
-                $(".section > div > input").val("1");
-            }
-        })
-        $(".btn-plus").on("click", function () {
-            var now = $(".section > div > input").val();
-            if ($.isNumeric(now)) {
-                $(".section > div > input").val(parseInt(now) + 1);
-            } else {
-                $(".section > div > input").val("1");
-            }
-        })
+        document.getElementById('aboutGame').click();
     }) 
 </script>
 
@@ -74,43 +56,6 @@
         background: #f8f9f9
     }
 
-    .title-price {
-        margin-top: 30px;
-        margin-bottom: 0px;
-        color: black
-    }
-
-    .title-attr {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        color: black;
-    }
-
-    .btn-minus {
-        cursor: pointer;
-        font-size: 7px;
-        display: flex;
-        align-items: center;
-        padding: 5px;
-        padding-left: 10px;
-        padding-right: 10px;
-        border: 1px solid gray;
-        border-radius: 2px;
-        border-right: 0px;
-    }
-
-    .btn-plus {
-        cursor: pointer;
-        font-size: 7px;
-        display: flex;
-        align-items: center;
-        padding: 5px;
-        padding-left: 10px;
-        padding-right: 10px;
-        border: 1px solid gray;
-        border-radius: 2px;
-        border-left: 0px;
-    }
 
     div.section>div {
         width: 100%;
@@ -142,50 +87,25 @@
         border: 1px solid orange;
     }
 
-    @media (max-width: 426px) {
-        .container {
-            margin-top: 0px !important;
-        }
+    .aboutGame {
+        text-align: right;
+        padding: 10px;
+    }
 
-        .container>.row {
-            padding: 0px !important;
-        }
-
-        .container>.row>.col-xs-12.col-sm-5 {
-            padding-right: 0px;
-        }
-
-        .container>.row>.col-xs-12.col-sm-9>div>p {
-            padding-left: 0px !important;
-            padding-right: 0px !important;
-        }
-
-        .container>.row>.col-xs-12.col-sm-9>div>ul {
-            padding-left: 10px !important;
-
-        }
-
-        .section {
-            width: 104%;
-        }
-
-        .menu-items {
-            padding-left: 0px;
-        }
+    .comments {
+        text-align: right;
+        padding: 10px;
     }
 </style>
 
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<!------ Include the above in your HEAD tag ---------->
-
 <div class="container">
 
     <div class="row">
-        <div class="col-xs-4 item-photo">
+        <div class="col-md-6">
             <img style="max-width:100%;" src="{{product.imagePath}}" />
         </div>
-        <div class="col-xs-5" style="border:0px solid gray">
+        <div class="col-md-6" style="border:0px solid gray">
             <!-- Datos del vendedor y titulo del producto -->
             <h3>{{product.title}}</h3>
             <div class="meta">
@@ -209,18 +129,17 @@
         </div>
     </div>
 
-    <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#about">درباره بازی</a></li>
+    <ul class="nav nav-tabs rtl">
+        <li class="active"><a data-toggle="tab" id='aboutGame' href="#about">درباره بازی</a></li>
         <li><a data-toggle="tab" href="#comments">نظرات کاربران</a></li>
     </ul>
 
     <div class="tab-content">
         <div id="about" class="tab-pane fade in active">
-            <h3>درباره بازی</h3>
-            <p>بازم درباره بازی</p>
+            <h6 class="aboutGame">{{product.description}}</h6>
         </div>
-        <div id="comments" class="tab-pane in fade">
-            <h3>هیچکس هنوز نظری ندارده</h3>
+        <div id="comments" class="tab-pane fade">
+            <h3 class="comments">هیچکس هنوز نظری ندارده</h3>
         </div>
     </div>
 
