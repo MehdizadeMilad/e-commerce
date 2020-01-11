@@ -168,12 +168,13 @@ h5 {
 }
 
 .meta {
+  padding: 4px;
   font-size: 7px;
   color: rgba(0, 0, 0, 0.4);
 }
 
 .meta a {
-  font-size: 10px;
+  font-size: 13px;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.4);
 }
@@ -322,8 +323,8 @@ a:focus {
   text-decoration: none;
   outline: 0 solid transparent;
   color: #000000;
-  font-weight: 600;
-  font-size: 16px;
+  /* font-weight: 600;
+  font-size: 16px; */
   font-family: Yekan, Shabnam, Samim, Sahel, "Open Sans", sans-serif;
 }
 
