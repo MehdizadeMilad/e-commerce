@@ -1,135 +1,87 @@
 <style>
-	.social li {
-		background: none repeat scroll 0 0 #B5B5B5;
-		border: 2px solid #B5B5B5;
-		-webkit-border-radius: 50%;
-		-moz-border-radius: 50%;
-		-o-border-radius: 50%;
-		-ms-border-radius: 50%;
-		border-radius: 50%;
-		float: left;
-		height: 36px;
-		line-height: 36px;
-		margin: 0 8px 0 0;
-		padding: 0;
-		text-align: center;
-		width: 36px;
-		transition: all 0.5s ease 0s;
-		-moz-transition: all 0.5s ease 0s;
-		-webkit-transition: all 0.5s ease 0s;
-		-ms-transition: all 0.5s ease 0s;
-		-o-transition: all 0.5s ease 0s;
+	.footer {
+		background: rgb(126, 195, 186)
 	}
 
-	.social li:hover {
-		transform: scale(1.15) rotate(360deg);
-		-webkit-transform: scale(1.1) rotate(360deg);
-		-moz-transform: scale(1.1) rotate(360deg);
-		-ms-transform: scale(1.1) rotate(360deg);
-		-o-transform: scale(1.1) rotate(360deg);
+	.links {
+		ul {
+			list-style-type: none;
+		}
+
+		li a {
+			color: white;
+			transition: color .2s;
+
+			&:hover {
+				text-decoration: none;
+				color: #4180CB;
+			}
+		}
 	}
 
-	.social li a {
-		color: #EDEFF1;
+	.about-company {
+		color: white;
+
+		i {
+			font-size: 25px;
+		}
+
+		a {
+			color: white;
+			transition: color .2s;
+
+			&:hover {
+				color: #4180CB
+			}
+		}
 	}
 
-	.social li:hover {
-		border: 2px solid #2c3e50;
-		background: #2c3e50;
+	.location {
+		i {
+			font-size: 18px;
+		}
 	}
 
-	.social li a i {
-		font-size: 16px;
-		margin: 0 0 0 5px;
-		color: #EDEFF1 !important;
+	.copyright p {
+		border-top: 1px solid rgba(255, 255, 255, .1);
+	}
 	}
 </style>
 
-<footer class="footer-area">
-	<!-- Main Footer Area -->
-	<div class="main-footer-area section-padding-100-0">
-		<div class="container">
-			<div class="row">
-				<!-- Single Footer Widget -->
-				<div class="col-12 col-sm-6 col-lg-3">
-					<div class="single-footer-widget mb-70 wow fadeInUp" data-wow-delay="100ms">
-						<div class="widget-title">
-							<a href="/"><img src="/img/core-img/logo2.png" alt=""></a>
-						</div>
-						<div class="widget-content">
-							<p>Something about us</p>
-						</div>
-					</div>
-				</div>
 
-				<div class="col-12 col-sm-6 col-lg-3">
-					<div class="single-footer-widget mb-70 wow fadeInUp" style="float: right;" data-wow-delay="300ms">
+<div class="mt-5 pt-5 pb-5 footer">
+	<div class="container">
+		<div class="row rtl">
+			<div class="col-lg-5 col-xs-12 about-company">
+				<h2>درباره ما</h2>
+				<p class="text-white-50">در این قسمت درمورد خودمون کمی براتون بگم</p>
+				<h3 class="mx-10">
+					<a href="#"><i class="fa fa-facebook-square"></i></a>
+					<a href="#"><i class="fa fa-linkedin-square"></i></a>
+					<a href="#"><i class="fa fa-youtube-square"></i></a>
+					<a href="#"><i class="fa fa-skype-square"></i></a>
+				</h3>
 
-						<h4>خبرنامه بازی‌های جدید</h4>
-						<ul>
-							<li>
-								<div class="input-append newsletter-box text-center form-group">
-									<input type="text" class="form-control full text-center"
-										placeholder="ایمیلت رو وارد کن ">
-									<button class="btn  bg-gray" type="button"> عضویت در خبرنامه</button>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="space-ten"></div>
-				<!-- Single Footer Widget -->
-				<div class="col-8 col-sm-6 col-lg-6">
-					<div class="single-footer-widget mb-70 wow fadeInUp" style="float: right;" data-wow-delay="300ms">
-						<div class="widget-title">
-							<h4>ما در شبکه‌های اجتماعی</h4>
-						</div>
-						<div class="">
-							<ul class="social">
-								<li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
-								<li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
-								<li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
-								<li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
-								<li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
+			</div>
+			<div class="col-lg-3 col-xs-12 links">
+			</div>
+			<div class="col-lg-4 col-xs-12 location">
+				<h4 class="mt-lg-0 mt-sm-4">چرا رنجرز؟</h4>
+				<p>از بازی‌خورهای دهه‌ی طلایی شصت</p>
+				<p class="mb-0"><i class="fa fa-phone mr-3"></i> 0098936-659-6744</p>
+				<p><i class="fa fa-envelope-o mr-3"></i>info@local.com</p>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col copyright">
+				<p class=""><small id="copyRight" class="text-white-50"></small></p>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<!-- Copywrite Area -->
-	<div class="copywrite-content">
-		<div class="container h-100">
-			<div class="row h-100 align-items-center">
-				<div class="col-12 col-sm-5">
-					<!-- Copywrite Text -->
-					<p class="copywrite-text"><a href="#">
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script> All rights reserved | This
-							template
-							is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-				</div>
-				{{!-- <div class="col-12 col-sm-7">
-					<!-- Footer Nav -->
-					<div class="footer-nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="game-review.html">Games</a></li>
-							<li><a href="post.html">Articles</a></li>
-							<li><a href="single-game-review.html">Reviews</a></li>
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-					</div>
-				</div> --}}
-			</div>
-		</div>
-	</div>
-</footer>
+<script>
+	$(document).ready(function () {
+		document.getElementById('copyRight').textContent = `© ${(new Date).getFullYear()} حقوق محفوظه`
+	})
+</script>
