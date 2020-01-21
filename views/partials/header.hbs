@@ -21,14 +21,15 @@
 
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: right;">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           <span class="farsi">حساب کاربری </span><i class="fa fa-user"></i class="fa fa-user">
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu  fade in" aria-labelledby="navbarDropdown" 
+        style="text-align: right; float: right">
 
           {{#unless login}}
           <a class="dropdown-item" href="/user/signup"><span class="farsi">ثبت‌نام</span></a>
@@ -44,7 +45,7 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li> --}}
     </ul>
-    <form action="#" method="POST" class="form-inline my-2 my-lg-0">
+    <form action="/search" method="POST" class="form-inline my-2 my-lg-0" style="justify-content: center;">
       <input class="form-control mr-sm-2 circleCorner" dir="rtl" type="search" placeholder="دنبال بازی می‌گردی؟ بنویس"
         aria-label="Search" style="font-family: Yekan">
       <button class="btn pill btn-outline-success my-2 my-sm-0 farsi circleCorner" type="submit"><span
