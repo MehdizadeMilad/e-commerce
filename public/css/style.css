@@ -75,6 +75,7 @@ textarea {
 
 .rtl {
   direction: rtl;
+  text-align: right;
 }
 
 /* Main page */
