@@ -1,60 +1,132 @@
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
-    id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
 
+.rtl {
+ direction: rtl;
 
+  text-align: right;
+}
 
-{{> alerts/alert}}
+</style>
 
 <div class="well">
     <ul class="nav nav-tabs" dir="rtl">
-        <li class="active"><a href="#home" data-toggle="tab">مشخصات شما</a></li>
-        <li><a href="#profile" data-toggle="tab">رمز عبور</a></li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#home" data-toggle="tab">مشخصات شما</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#profile" data-toggle="tab">رمز عبور</a>
+        </li>
     </ul>
     <div id="myTabContent" class="tab-content">
-        <div class="tab-pane active in" id="home">
-            <form action="/user/profile/update" method="POST" id="tab">
-                <label>نام و نام‌خانوادگی</label>
-                <input type="text" value="{{user.fullName}}" name="fullName" class="input-xlarge" min="5"
-                    maxlength="100" required>
-                <label>ایمیل</label>
-                <input type="text" value="{{user.email}}" disabled name="email" class="input-xlarge" minlength="6"
-                    maxlength="25">
-                <label>آدرس کامل پستی</label>
-                <textarea value="Smith" rows="3" name="address" class="input-xlarge" minlength="5"
-                    maxlength="250">{{user.address}}</textarea>
+        <br>
+        <div class="tab-pane fade show active" id="home">
+            <form action="/ps4/user/profile/update" class="rtl" method="POST" id="tab">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <label>نام و نام‌خانوادگی</label>
+                            <input type="text" value="{{user.fullName}}" name="fullName" class="form-control"min="5"
+                                maxlength="100" required>
+                        </div>
+                    </div>
+                </div>
 
-                <label>کد پستی</label>
-                <input type="number" value="{{user.postalCode}}" name="postalCode" class="input-xlarge" minlength="8"
-                    maxlength="25">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <label>ایمیل</label>
+                            <input type="text" value="{{user.email}}" disabled name="email" class="form-control"
+                                minlength="6" maxlength="25">
+                        </div>
+                    </div>
+                </div>
 
-                <label>شماره همراه</label>
-                <input type="text" value="{{user.mobile}}" name="mobile" class="input-xlarge" minlength="10"
-                    maxlength="15">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <label>آدرس کامل پستی</label>
+                            <textarea value="Smith" rows="3" name="address" class="form-control" minlength="5"
+                                maxlength="250">{{user.address}}</textarea>
+                        </div>
+                    </div>
+                </div>
 
-                <label>شماره تلفن ثابت</label>
-                <input type="text" value="{{user.tel}}" name="tel" class="input-xlarge" minlength="4" maxlength="25">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <label>کد پستی</label>
+                            <input type="number" value="{{user.postalCode}}" name="postalCode" class="form-control"
+                                minlength="8" maxlength="25">
+                        </div>
+                    </div>
+                </div>
 
-                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <label>شماره همراه</label>
+                            <input type="text" value="{{user.mobile}}" name="mobile" class="form-control" minlength="10"
+                                maxlength="15">
+                        </div>
+                    </div>
+                </div>
 
-                <div>
-                    <button class="btn btn-primary">بروزرسانی</button>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <label>شماره تلفن ثابت</label>
+                            <input  type="text" value="{{user.tel}}" name="tel" class="form-control" minlength="4"
+                                maxlength="25">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                            <button class="btn btn-primary btn-block">بروزرسانی</button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
         <div class="tab-pane fade" id="profile">
-            <form id="tab2" action="/user/profile/edit/changePassword" method="POST">
-                <label>رمز فعلی</label>
-                <input type="password" name="currentPassword" class="input-xlarge" required>
-                <label>رمز جدید</label>
-                <input type="password" name="newPassword" class="input-xlarge" required>
-                <label>رمز جدید دوباره</label>
-                <input type="password" name="newPasswordConfirm" class="input-xlarge" required>
-                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-                <div>
-                    <button class="btn btn-primary">تغییر رمز عبور</button>
+            <form id="tab2" class="rtl" action="/ps4/user/profile/edit/changePassword" method="POST">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <label for="currentPassword">رمز فعلی</label>
+                            <input type="password" class="form-control" name="currentPassword" id="currentPassword"
+                                class="input-xlarge" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <label for="newPassword">رمز جدید</label>
+                            <input type="password" class="form-control" name="newPassword" id="newPassword"
+                                class="input-xlarge" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <div class="form-group">
+                            <label for="newPasswordConfirm">رمز جدید دوباره</label>
+                            <input type="password" class="form-control" name="newPasswordConfirm"
+                                name="newPasswordConfirm" class="input-xlarge" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-2 col-lg-6">
+                        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                        <button class="btn btn-primary btn-block">تغییر رمز عبور</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
+</div>

@@ -20,7 +20,7 @@ const adminRoutes = require('./routes/admin');
 
 
 var app = express();
-mongoose.connect('mongodb://127.0.0.1:27017/shopping', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://ranger00:123qweQWERanger00@127.0.0.1:37000/shopping', { useNewUrlParser: true, useUnifiedTopology: true })
 require('./config/passport');
 
 // view engine setup
@@ -64,6 +64,8 @@ app.use(passport.session());
 
 
 app.use((req, res, next) => {
+  console.log(req.protocol + '://' + req.get('host') + req.originalUrl);
+  console.log(req.headers);
   res.locals.login = req.isAuthenticated();
   // the login variable will be available in all our views from now on.
   res.locals.session = req.session; // sessions will be available too.

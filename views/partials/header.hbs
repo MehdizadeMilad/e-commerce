@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light ">
-  <a class="navbar-brand" href="/"><i class="fa fa-gamepad"></i> Rangers</a>
+  <a class="navbar-brand" href="/ps4"><i class="fa fa-gamepad"></i> Rangers</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
   {{#if session.cart.totalQty}}
   <ul class="nav navbar-nav navbar-right">
     <li class="nav-item">
-      <a class="nav-link farsi" href="/shopping-cart">
+      <a class="nav-link farsi" href="/ps4/shopping-cart">
         <span class="badge-info badge-pill"> {{session.cart.totalQty}} </span>
         <i class="fa fa-shopping-cart"><span class="farsi"> سبد خرید</span></i>
       </a>
@@ -31,18 +31,15 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
           {{#unless login}}
-          <a class="dropdown-item" href="/user/signup"><span class="farsi">ثبت‌نام</span></a>
-          <a class="dropdown-item" href="/user/signin"><span class="farsi">ورود</span></a>
+          <a class="dropdown-item" href="/ps4/user/signup"><span class="farsi">ثبت‌نام</span></a>
+          <a class="dropdown-item" href="/ps4/user/signin"><span class="farsi">ورود</span></a>
           {{else}}
-          <a class="dropdown-item" href="/user/profile"><span class="farsi">پروفایل</span></a>
+          <a class="dropdown-item" href="/ps4/user/profile"><span class="farsi">پروفایل</span></a>
           {{!-- <div class="dropdown-divider"></div> --}}
-          <a class="dropdown-item" href="/user/signout"><span class="farsi">خروج</span></a>
+          <a class="dropdown-item" href="/ps4/user/signout"><span class="farsi">خروج</span></a>
           {{/unless }}
         </div>
       </li>
-      {{!-- <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li> --}}
     </ul>
     <form action="#" method="POST" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2 circleCorner" dir="rtl" type="search" placeholder="دنبال بازی می‌گردی؟ بنویس"

@@ -16,11 +16,11 @@
                     <td>
                         <figure class="media">
                             <div class="img-wrap">
-                                <a href="/details/{{this.item.title}}">
+                                <a href="/ps4/details/{{this.item.title}}">
                                     <img src="{{this.item.imagePath}}" class="img-thumbnail img-sm"></div>
                             </a>
                             <figcaption class="media-body">
-                                <a href="/details/{{this.item.title}}">
+                                <a href="/ps4/details/{{this.item.title}}">
                                     <h5 class="title text-truncate">{{this.item.title}} <sup class="farsi" style="color: lightgray;"> (x{{this.qty}})</sup>
                                     </h5>
                                 </a>
@@ -32,14 +32,14 @@
                         </figure>
                     </td>
                     <td class="text-right" style="vertical-align: middle;">
-                        <a href="/remove/{{this.item._id}}" class="btn btn-outline-danger buttonFarsi"> × حذف</a>
+                        <a href="/ps4/remove/{{this.item._id}}" class="btn btn-outline-danger buttonFarsi"> × حذف</a>
                     </td>
                 </tr>
                 {{/each}}
 
             </tbody>
         </table>
-        <a href="/checkout" class="btn btn-block btn-success farsi">ثبت سفارش <strong class="farsi">مجموع: {{totalPrice}} تومان</strong></a>
+        <a href="/ps4/checkout" class="btn btn-block btn-success farsi">ثبت سفارش <strong class="farsi">مجموع: {{totalPrice}} تومان</strong></a>
 
     </div> <!-- card.// -->
 

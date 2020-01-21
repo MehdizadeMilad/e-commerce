@@ -1,7 +1,7 @@
 <h2>Products</h2>
 <hr>
 
-<a href="/admin/product/add" class="btn btn-primary btn-block">Add a new Product</a>
+<a href="/ps4/admin/product/add" class="btn btn-primary btn-block">Add a new Product</a>
 
 <table class="table table-hover ">
     <thead>
@@ -28,9 +28,9 @@
         <td>{{trimString this.description 10}}...</td>
         <td>{{this.price}}</td>
         <td>
-            <a href="/admin/product/delete/{{this._id}}" class="btn btn-danger">Delete</a>
+            <a href="/ps4/admin/product/delete/{{this._id}}" class="btn btn-danger">Delete</a>
             <strong>|</strong>
-            <a href="/admin/product/edit/{{this._id}}" class="btn  btn-secondary ">edit</a>
+            <a href="/ps4/admin/product/edit/{{this._id}}" class="btn  btn-secondary ">edit</a>
         </td>
 
     </tr>

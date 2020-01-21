@@ -7,23 +7,23 @@
 
 @font-face {
   font-family: Titr;
-  src: url("/fonts/titrbold.ttf") format("truetype");
+  src: url("/ps4/fonts/titrbold.ttf") format("truetype");
 }
 @font-face {
   font-family: Sahel;
-  src: url("/fonts/sahel.ttf") format("truetype");
+  src: url("/ps4/fonts/sahel.ttf") format("truetype");
 }
 @font-face {
   font-family: Samim;
-  src: url("/fonts/samim.ttf") format("truetype");
+  src: url("/ps4/fonts/samim.ttf") format("truetype");
 }
 @font-face {
   font-family: Shabnam;
-  src: url("/fonts/shabnam.ttf") format("truetype");
+  src: url("/ps4/fonts/shabnam.ttf") format("truetype");
 }
 @font-face {
   font-family: Yekan;
-  src: url("/fonts/yekan.ttf") format("truetype");
+  src: url("/ps4/fonts/yekan.ttf") format("truetype");
 }
 
 * {

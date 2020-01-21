@@ -54,7 +54,7 @@ router.post('/profile/update', isLoggedIn, (req, res, next) => {
             messages.push(err.msg)
         });
         req.flash('profileEditMessages', messages);
-        return res.redirect('/user/profile/edit');
+        return res.redirect('/ps4/user/profile/edit');
     }
 
     const { fullName, address, postalCode, tel, mobile } = req.body
@@ -68,16 +68,16 @@ router.post('/profile/update', isLoggedIn, (req, res, next) => {
         user.save((err, result) => {
             if (err) {
                 req.flash('success', 'عملیات بروزرسانی موفق نبود. لطفا دوباره امتحان کن');
-                return res.redirect('/user/profile')
+                return res.redirect('/ps4/user/profile')
             }
 
             req.flash('success', 'مشخصات شما بروزرسانی شد');
-            return res.redirect('/user/profile')
+            return res.redirect('/ps4/user/profile')
         })
     })
         .catch(err => {
             req.flash('success', 'بروز خطا، لطفا بعدا امتحان کنین')
-            res.redirect('/user/profile')
+            res.redirect('/ps4/user/profile')
         })
 });
 
@@ -104,7 +104,7 @@ router.post('/profile/edit/changePassword', isLoggedIn, (req, res, next) => {
     }
     else {
         req.flash('profileEditMessages', 'رمزعبور معتبر نیست');
-        return res.redirect('/user/profile/edit');
+        return res.redirect('/ps4/user/profile/edit');
     }
 
     req.checkBody('newPassword', 'رمزعبور حداقل ۴ کارکتر باید باشه').notEmpty().isLength({ min: 4, max: 70 })
@@ -118,7 +118,7 @@ router.post('/profile/edit/changePassword', isLoggedIn, (req, res, next) => {
         });
 
         req.flash('profileEditMessages', messages);
-        return res.redirect('/user/profile/edit');
+        return res.redirect('/ps4/user/profile/edit');
     }
 
     const currentUser = req.user;
@@ -130,18 +130,18 @@ router.post('/profile/edit/changePassword', isLoggedIn, (req, res, next) => {
                 throw new Error('Error in password update');
             }
             req.flash('profileEditMessages', 'رمز عبور بروزرسانی شد');
-            res.redirect('/user/profile/edit')
+            res.redirect('/ps4/user/profile/edit')
         })
     }).catch(err => {
         req.flash('profileEditMessages', [' بروز خطا لطفا بعدا امتحان کنید یا اگر عجله دارید، با ما تماس بگیرین']);
-        return res.redirect('/user/profile/edit');
+        return res.redirect('/ps4/user/profile/edit');
     })
 });
 
 
 router.get('/signout', isLoggedIn, (req, res, next) => {
     req.logout();
-    res.redirect('/');
+    res.redirect('/ps4');
 })
 
 
@@ -161,7 +161,7 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.post('/signup', passport.authenticate('local.signup', {
-    failureRedirect: '/user/signup',
+    failureRedirect: '/ps4/user/signup',
     failureFlash: true,
     successFlash: true,
 }), handleAuthenticationRedirection);
@@ -178,7 +178,7 @@ router.get('/signin', (req, res, next) => {
 
 router.post('/signin', passport.authenticate('local.signin', {
     // successRedirect: '/user/profile', //! we are going to handle it manually
-    failureRedirect: '/user/signin',
+    failureRedirect: '/ps4/user/signin',
     failureFlash: true,
     passReqToCallback: true
 }), handleAuthenticationRedirection);
@@ -187,12 +187,13 @@ router.post('/signin', passport.authenticate('local.signin', {
 //! if authentication succeeded:
 function handleAuthenticationRedirection(req, res, next) {
     const oldUrl = req.session.oldUrl
+	console.log(oldUrl);
     if (oldUrl) {
         req.session.oldUrl = null;
         res.redirect(oldUrl);
     }
     else {
-        res.redirect('/user/profile/edit');
+        res.redirect('/ps4/user/profile/edit');
     }
 }
 
@@ -203,7 +204,7 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next()
     }
-    res.redirect('/user/signin')
+    res.redirect('/ps4/user/signin')
 }
 
 function notLoggedIn(req, res, next) {
@@ -212,7 +213,7 @@ function notLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) {
         return next()
     }
-    res.redirect('/')
+    res.redirect('/ps4')
 }
 
 
