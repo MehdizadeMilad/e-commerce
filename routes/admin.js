@@ -164,7 +164,6 @@ function isLoggedIn(req, res, next) {
     //Passport helper
     if (req.isAuthenticated())
         if (req.user.role === 'admin') {
-            console.log(req.user.email, req.user.role);
             return next()
         }
 

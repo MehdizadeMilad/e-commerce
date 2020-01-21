@@ -61,7 +61,7 @@ let done = 0;
 for (let i = 0; i < products.length; i++) {
     products[i].save(function (err, result) {
         if (err) {
-            console.log(err);
+            //TODO log
             exit();
         }
         done++;
