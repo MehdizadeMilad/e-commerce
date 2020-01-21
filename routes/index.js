@@ -3,8 +3,13 @@ var router = express.Router();
 const csrf = require('csurf')
 var Cart = require('../models/cart');
 
+const { check, validationResult } = require('express-validator/check');
+
 const csrfProtection = csrf();
-router.use(csrfProtection);
+router.use((req, res, next) => {
+  if (req.url.split('?')[0] === '/search') return next();
+  csrfProtection(req, res, next);
+});
 
 var Product = require('../models/product');
 var Order = require('../models/order');
@@ -14,9 +19,44 @@ const Message = require('../models/messages');
 router.get('/', function (req, res, next) {
   var successMsg = req.flash('success')[0];
   Product.find(function (err, docs) {
-    res.render('shop/index', { title: 'Shopping Cart', products: docs, successMessage: successMsg, noMessages: !successMsg });
+    res.render('shop/index',
+      {
+        title: 'Shopping Cart',
+        products: docs,
+        successMessage: successMsg,
+        noMessages: !successMsg
+      });
   });
 });
+
+
+router.post('/search',
+  [
+    check('term').isLength({ min: 3 }).withMessage('اسم بازی رو بنویس')
+      .isLength({ max: 5 }).withMessage('چه خبره!')
+      // .not().isEmpty().withMessage('اسم بازی رو بنویس دیگه')
+      .trim().escape()
+  ],
+  (req, res, next) => {
+
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty()) {
+      return res.status(422).json({ errors: validationErrors.array() });
+    }
+
+    //TODO: check sanitization
+    let searchTerm = req.body.term;
+    let productFindExpression = new RegExp(searchTerm, 'i');
+    Product.find({ title: productFindExpression }, (err, products) => {
+      if (err) return res.send(err);
+      return res.send(JSON.stringify(products));
+    })
+      .catch(_ => {
+        return res.send('Error');
+      })
+  });
+
+
 
 router.get('/details/:title', (req, res, next) => {
   let productTitle = req.params.title;
