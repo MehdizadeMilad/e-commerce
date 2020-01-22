@@ -74,12 +74,12 @@ router.get('/add-to-cart/:id', function (req, res, next) {
 
   Product.findById(productId, function (err, product) {
     if (err) {
-      return res.redirect('/');
+      return res.redirect('/ps4');
     }
     cart.add(product, product.id);
     req.session.cart = cart;
     req.flash('success', 'کالا به سبد خرید اضافه شد');
-    res.redirect('/');
+    res.redirect('/ps4');
   });
 });
 
@@ -89,7 +89,7 @@ router.get('/reduce/:id', function (req, res, next) {
 
   cart.reduceByOne(productId);
   req.session.cart = cart;
-  res.redirect('/shopping-cart');
+  res.redirect('/ps4/shopping-cart');
 });
 
 router.get('/remove/:id', function (req, res, next) {
@@ -98,7 +98,7 @@ router.get('/remove/:id', function (req, res, next) {
 
   cart.removeItem(productId); https://www.hamshahrionline.ir/rest/postCommentVote
   req.session.cart = cart;
-  res.redirect('/shopping-cart');
+  res.redirect('/ps4/shopping-cart');
 });
 
 router.get('/shopping-cart', function (req, res, next) {
@@ -111,7 +111,7 @@ router.get('/shopping-cart', function (req, res, next) {
 
 router.get('/checkout', isLoggedIn, function (req, res, next) {
   if (!req.session.cart) {
-    return res.redirect('/shopping-cart');
+    return res.redirect('/ps4/shopping-cart');
   }
   var cart = new Cart(req.session.cart);
   var errMsg = req.flash('error')[0];
@@ -127,7 +127,7 @@ router.get('/checkout', isLoggedIn, function (req, res, next) {
 
 router.post('/checkout', isLoggedIn, function (req, res, next) {
   if (!req.session.cart) {
-    return res.redirect('/shopping-cart');
+    return res.redirect('/ps4/shopping-cart');
   }
 
   var cart = new Cart(req.session.cart);
@@ -142,11 +142,11 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
   order.save((err, result) => {
     if (err) {
       req.flash('error', 'Checkout Failed!');
-      return res.redirect('/user/profile')
+      return res.redirect('/ps4/user/profile')
     }
     req.flash('success', 'سفارش شما با موفقیت ثبت شد. با شما تماس می‌گیریم');
     req.session.cart = null;
-    return res.redirect('/');
+    return res.redirect('/ps4');
   })
 });
 
@@ -178,7 +178,7 @@ function isLoggedIn(req, res, next) {
     return next();
   }
   req.session.oldUrl = req.url;
-  res.redirect('/user/signin');
+  res.redirect('/ps4/user/signin');
 }
 
 

@@ -11,6 +11,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 // const flash = require('express-flash');
 const validator = require('express-validator');
+const compression = require('compression');
 const MongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes/index');
@@ -20,6 +21,13 @@ const adminRoutes = require('./routes/admin');
 
 
 var app = express();
+app.use(compression({
+  filter: function (req, res, next) {
+    return !!req.headers['x-no-compression'];
+  }
+}));
+
+// mongoose.connect('mongodb://ranger00:123qweQWERanger00@127.0.0.1:37000/shopping', { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connect('mongodb://127.0.0.1:27017/shopping', { useNewUrlParser: true, useUnifiedTopology: true })
 require('./config/passport');
 
